@@ -7,6 +7,20 @@ description: Use when navigating web pages, filling forms, extracting data, maki
 
 A CLI for Chrome automation using the rod library. Each command connects to a persistent headless Chrome instance - start once, run multiple commands, stop when done.
 
+## Prerequisites
+
+⚠️ **STOP if rodney is not installed.**
+
+Before using this skill, verify rodney is available:
+
+```bash
+rodney --version
+```
+
+If not installed, install it manually from: https://github.com/simonw/rodney
+
+Do not proceed with any rodney commands until installed.
+
 ## When to Use
 
 - Opening URLs and navigating (back, forward, reload)
