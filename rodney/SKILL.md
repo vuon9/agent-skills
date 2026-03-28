@@ -17,7 +17,7 @@ Verify Go is installed:
 go version
 ```
 
-If Go is not installed, install it from https://go.dev/dl/ before proceeding.
+If Go is not installed, stop and install it manually before proceeding.
 
 ---
 

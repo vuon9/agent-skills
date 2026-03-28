@@ -19,7 +19,7 @@ Guide for building Wails v3 applications with Go backend and web frontend.
 go version
 ```
 
-If not installed, download from https://go.dev/dl/
+If not installed, stop and install Go manually before proceeding.
 
 ### Bun or npm
 
@@ -29,9 +29,7 @@ bun --version
 npm --version
 ```
 
-If not installed, download from:
-- Bun: https://bun.sh/
-- Node.js (includes npm): https://nodejs.org/
+If not installed, stop and install manually before proceeding.
 
 ### Wails CLI
 
