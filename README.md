@@ -6,7 +6,8 @@ A collection of skills for AI coding agents.
 
 | Skill | Description |
 |-------|-------------|
-| [rodney](./rodney/SKILL.md) | Chrome browser automation via CLI - navigate, interact, extract, andassert on web pages |
+| [rodney](./rodney/SKILL.md) | Chrome browser automation via CLI - navigate, interact, extract, and assert on web pages |
+| [wails-fullstack](./wails-fullstack/SKILL.md) | Wails v3 desktop app development - Go backend with React/Vue/Svelte frontend |
 
 ## License
 
