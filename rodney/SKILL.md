@@ -29,13 +29,16 @@ Do not proceed until Go is installed.
 **Install Rodney:**
 
 ```bash
-# Clone and build
-git clone https://github.com/simonw/rodney.git
-cd rodney
-go build -o rodney .
+go install github.com/simonw/rodney@latest
+```
 
-# Move to PATH (optional)
-sudo mv rodney /usr/local/bin/
+This builds and installs rodney to `$HOME/go/bin/` (or `$GOPATH/bin/`).
+
+Ensure `$HOME/go/bin` is in your PATH:
+
+```bash
+# Add to shell config (~/.bashrc, ~/.zshrc, etc.)
+export PATH="$HOME/go/bin:$PATH"
 ```
 
 Or download pre-built binaries from: https://github.com/simonw/rodney/releases
@@ -45,7 +48,7 @@ Or download pre-built binaries from: https://github.com/simonw/rodney/releases
 **Verify installation:**
 
 ```bash
-rodney --version
+rodney version
 ```
 
 Do not proceed with any rodney commands until verified.
