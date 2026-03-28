@@ -9,17 +9,46 @@ A CLI for Chrome automation using the rod library. Each command connects to a pe
 
 ## Prerequisites
 
-⚠️ **STOP if rodney is not installed.**
+⚠️ **STOP if Go is not installed.**
 
-Before using this skill, verify rodney is available:
+Rodney requires Go to build from source. Verify Go is available:
+
+```bash
+go version
+```
+
+If Go is not installed, install it first:
+- macOS: `brew install go`
+- Linux: `sudo apt install golang` or `sudo dnf install golang`
+- Windows: Download from https://go.dev/dl/
+
+Do not proceed until Go is installed.
+
+---
+
+**Install Rodney:**
+
+```bash
+# Clone and build
+git clone https://github.com/simonw/rodney.git
+cd rodney
+go build -o rodney .
+
+# Move to PATH (optional)
+sudo mv rodney /usr/local/bin/
+```
+
+Or download pre-built binaries from: https://github.com/simonw/rodney/releases
+
+---
+
+**Verify installation:**
 
 ```bash
 rodney --version
 ```
 
-If not installed, install it manually from: https://github.com/simonw/rodney
-
-Do not proceed with any rodney commands until installed.
+Do not proceed with any rodney commands until verified.
 
 ## When to Use
 
