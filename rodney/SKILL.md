@@ -145,6 +145,22 @@ When something isn't working:
 3. **Visual check** - `rodney screenshot`
 4. **Timing issues** - `rodney wait ".element"`, `rodney waitstable`
 
+## Not Yet Supported
+
+*Last checked: Rodney v0.4.0*
+
+Rodney doesn't yet support these go-rod features:
+
+- **Special keyboard keys** (Enter, Tab, Escape, Arrow keys) - `rodney input` only types text
+- **iframe targeting** - Cannot target elements inside iframes
+- **Console log capture** - Cannot capture browser console output
+- **Network request logging** - Cannot list network requests
+- **Shadow DOM targeting** - Cannot target elements inside shadow DOM
+- **Dialog handling** - Cannot accept/dismiss alert/confirm dialogs
+- **Request interception** - Cannot block/modify network requests
+- **Cookie management** - Cannot get/set cookies directly
+- **Local storage** - Cannot get/set localStorage
+
 ## Advanced
 
 For accessibility tree commands (`ax-tree`, `ax-find`, `ax-node`), PDF output, proxy configuration, and `--local` sessions:
