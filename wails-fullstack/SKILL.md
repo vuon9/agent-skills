@@ -11,9 +11,7 @@ Guide for building Wails v3 applications with Go backend and web frontend.
 
 ## Prerequisites
 
-⚠️ **STOP if any prerequisite is missing.**
-
-Wails requires Go, a JavaScript runtime, and the Wails CLI. Verify all are installed:
+⚠️ **STOP if prerequisites are missing.**
 
 ### Go 1.21+
 
@@ -21,10 +19,7 @@ Wails requires Go, a JavaScript runtime, and the Wails CLI. Verify all are insta
 go version
 ```
 
-If not installed:
-- macOS: `brew install go`
-- Linux: `sudo apt install golang` or `sudo dnf install golang`
-- Windows: Download from https://go.dev/dl/
+If not installed, download from https://go.dev/dl/
 
 ### Bun or npm
 
@@ -34,9 +29,9 @@ bun --version
 npm --version
 ```
 
-If not installed:
-- Bun: `curl -fsSL https://bun.sh/install | bash`
-- npm: Comes with Node.js from https://nodejs.org/
+If not installed, download from:
+- Bun: https://bun.sh/
+- Node.js (includes npm): https://nodejs.org/
 
 ### Wails CLI
 
