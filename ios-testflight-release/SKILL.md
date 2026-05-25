@@ -55,13 +55,7 @@ Prefer a thin wrapper that calls a reusable workflow. The public
 `vuon9/gh-workflows` repository can be reused directly for iOS TestFlight
 uploads, or forked if the project needs its own workflow contract.
 
-Use a stable major tag when available:
-
-```yaml
-uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v1
-```
-
-During pilot validation, pin to the tested version tag instead:
+Pin the workflow to the exact tested reusable workflow version:
 
 ```yaml
 uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.5
@@ -87,7 +81,7 @@ on:
 
 jobs:
   testflight:
-    uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v1
+    uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.5
     with:
       project-path: App.xcodeproj
       scheme: App
