@@ -124,10 +124,54 @@ When practical, test the user path: mount the DMG, copy the app to `/Application
 
 ## GitHub Actions Notes
 
+- For Wails apps, prefer the shared workflow in `vuon9/gh-workflows`: `.github/workflows/wails-macos-release.yml`.
 - Pin third-party actions and tools to stable versions. For `go-task`, use a known-good version such as `v3.49.0` unless the repo intentionally moves forward.
 - Separate branch artifact runs from tag release runs. A branch run can prove sign/notarize is green while release asset upload is skipped because there is no tag.
 - Upload signed and notarized artifacts on manual branch runs so they can be inspected before tagging.
 - Keep reusable workflow inputs small: app name, bundle id, artifact paths, certificate secret names, and release mode.
+
+## Wails Reusable Workflow
+
+Use `vuon9/gh-workflows/.github/workflows/wails-macos-release.yml` when the app is a Wails macOS app and the caller can provide a build command that produces a release `.app` bundle.
+
+Caller wrapper shape:
+
+```yaml
+name: macOS Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    uses: vuon9/gh-workflows/.github/workflows/wails-macos-release.yml@main
+    with:
+      app-name: DevToolbox
+      bundle-id: app.example.devtoolbox
+      team-id: ${{ vars.APPLE_TEAM_ID }}
+      package-command: task package:macos
+      app-path: build/bin/DevToolbox.app
+      dmg-name: DevToolbox-${{ github.ref_name }}.dmg
+      artifact-name: devtoolbox-macos-release
+    secrets:
+      APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_P12_BASE64: ${{ secrets.APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_P12_BASE64 }}
+      APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD }}
+      APP_STORE_CONNECT_API_KEY_P8: ${{ secrets.APP_STORE_CONNECT_API_KEY_P8 }}
+      APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+      APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+      MACOS_CODESIGN_IDENTITY: ${{ secrets.MACOS_CODESIGN_IDENTITY }}
+```
+
+Before recommending it, verify the workflow contract still matches the app:
+
+- Required inputs: `app-name`, `bundle-id`, `team-id`, `package-command`, `app-path`, and `dmg-name`.
+- Optional inputs include `working-directory`, `artifact-name`, `runner-label`, `go-version-file`, `go-version`, `bun-version`, `task-version`, `upload-github-release`, and `github-release-prerelease`.
+- Required secrets use App Store Connect API key notarization: `APP_STORE_CONNECT_API_KEY_P8`, `APP_STORE_CONNECT_API_KEY_ID`, and `APP_STORE_CONNECT_API_ISSUER_ID`.
+- The workflow uploads a signed DMG artifact on all successful runs and uploads a GitHub Release asset only for tag refs when `upload-github-release` is true.
+- Pin to a version tag when one exists. Use `@main` only for active testing or when the workflow repo has not published a stable tag yet.
 
 ## Troubleshooting
 
