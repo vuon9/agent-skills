@@ -7,7 +7,7 @@ A collection of skills for AI coding agents.
 Install this repository with the open agent skills CLI:
 
 ```bash
-npx skills add vuon9/agent-skills
+npx skills add -g vuon9/agent-skills
 ```
 
 The `skills` tool opens an interactive flow where you can choose which skills
