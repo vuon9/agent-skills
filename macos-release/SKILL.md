@@ -1,9 +1,9 @@
 ---
-name: macos-app-signing-release
+name: macos-release
 description: Use when signing, notarizing, packaging, or releasing macOS apps with Developer ID and GitHub Actions.
 ---
 
-# macOS App Signing Release
+# macOS Release
 
 Use this for macOS desktop apps distributed outside the Mac App Store, especially when CI builds a `.app`, packages a `.dmg`, signs with Developer ID, notarizes with Apple, and verifies Gatekeeper acceptance.
 
