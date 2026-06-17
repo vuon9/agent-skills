@@ -17,5 +17,5 @@ upload through GitHub Actions and App Store Connect API credentials.
 ## Not For
 
 - Public App Store release approval.
-- General Xcode project readiness; use `apple-development`.
+- General Xcode project readiness; use `apple-platform-readiness`.
 - macOS Developer ID distribution; use `macos-release`.

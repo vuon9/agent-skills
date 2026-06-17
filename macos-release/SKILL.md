@@ -7,7 +7,7 @@ description: Use when signing, notarizing, packaging, or releasing macOS apps wi
 
 Use this for macOS desktop apps distributed outside the Mac App Store, especially when CI builds a `.app`, packages a `.dmg`, signs with Developer ID, notarizes with Apple, and verifies Gatekeeper acceptance.
 
-For general Xcode, Apple account, or App Store Connect setup, use `apple-development`. For reusable `workflow_call` design, use `github-reusable-workflows`.
+For general Xcode, Apple account, or App Store Connect setup, use `apple-platform-readiness`. For reusable `workflow_call` design, use `github-reusable-workflows`.
 
 ## Guardrails
 

@@ -1,9 +1,9 @@
 ---
-name: apple-development
+name: apple-platform-readiness
 description: Use when preparing or verifying Apple platform development environments, Xcode projects, signing, simulators, archives, or App Store Connect release readiness.
 ---
 
-# Apple Development
+# Apple Platform Readiness
 
 Use this skill as a safety checklist for iOS, iPadOS, macOS, watchOS, tvOS, or visionOS app work. Keep secrets private and verify with local tools before claiming readiness.
 

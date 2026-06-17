@@ -1,4 +1,4 @@
-# Apple Development
+# Apple Platform Readiness
 
 Use this skill when an agent needs a safety checklist for Apple platform work
 before changing projects, signing settings, simulators, archives, or release
