@@ -27,7 +27,8 @@ find . -name "*.xcscheme" -maxdepth 5
 Check local build health:
 
 ```bash
-xcodebuild test -project App.xcodeproj -scheme App -destination "platform=iOS Simulator,name=iPhone 17"
+xcrun simctl list devices available
+xcodebuild test -project App.xcodeproj -scheme App -destination "platform=iOS Simulator,name=<available iPhone simulator>"
 ```
 
 If tests fail, stop and report the failure. Do not upload a release build unless the user explicitly accepts the risk.
@@ -58,7 +59,7 @@ uploads, or forked if the project needs its own workflow contract.
 Pin the workflow to the exact tested reusable workflow version:
 
 ```yaml
-uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.5
+uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.8
 ```
 
 Keep the caller wrapper small:
@@ -81,7 +82,7 @@ on:
 
 jobs:
   testflight:
-    uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.5
+    uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.8
     with:
       project-path: App.xcodeproj
       scheme: App

@@ -50,7 +50,8 @@ find . -name "*.xcscheme" -maxdepth 5
 Use the project’s existing commands when present. Otherwise prefer:
 
 ```bash
-xcodebuild test -project App.xcodeproj -scheme App -destination "platform=iOS Simulator,name=iPhone 17"
+xcrun simctl list devices available
+xcodebuild test -project App.xcodeproj -scheme App -destination "platform=iOS Simulator,name=<available iPhone simulator>"
 xcodebuild archive -project App.xcodeproj -scheme App -configuration Release -destination "generic/platform=iOS" -archivePath build/App.xcarchive
 ```
 
