@@ -166,7 +166,7 @@ jobs:
 
   release:
     needs: build
-    uses: vuon9/gh-workflows/.github/workflows/macos-release.yml@main
+    uses: vuon9/gh-workflows/.github/workflows/macos-release.yml@v0.2.0
     with:
       app-name: DevToolbox
       team-id: ${{ vars.APPLE_TEAM_ID }}
