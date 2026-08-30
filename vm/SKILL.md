@@ -26,6 +26,7 @@ Remaining triggers.
 - A PR needs to reach green -> use the `watchdog` role. It stops and reports once green, never loops past green.
 - Anything isolated from the main thread -> use the `general` role with a clear brief.
 - About to declare done -> verify against the real artifact, not "it compiles".
+- Planning or brainstorming produced a spec or plan doc -> keep it local. Do not commit it to the remote origin unless the user asks.
 
 ## Required skills
 
@@ -50,6 +51,7 @@ Each principle names when it applies. Read it before acting on that situation.
 - **Minimal, and long-term.** When sizing a change, or tempted to stack a "quick fix". Smallest change that truly solves it, and prefer a real long-term fix.
 - **Verify, don't assume.** When about to declare done. Prove it against the real artifact, not "it compiles".
 - **Confirm before posting.** When a review or comment goes to GitHub. Check the report is sound first.
+- **Keep generated docs local.** When planning or brainstorming produced a spec, plan, or similar doc. Keep it local; commit to the remote origin only when the user asks.
 - **PR template.** When opening a PR. Follow the repo or org template.
 - **Babysit, then stop.** When a PR needs to reach green. Drive it there, then stop and report. Never loop past green.
 - **Delegate what is isolated.** When work is unrelated to the main thread. Send it to a subagent with a clear, self-contained brief.
