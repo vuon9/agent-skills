@@ -1,4 +1,4 @@
-# Design spec: `vm` (vuong mode)
+# Design spec: `vm` mode
 
 Date: 2026-08-30
 Status: Approved for review
