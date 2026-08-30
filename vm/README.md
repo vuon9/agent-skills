@@ -3,24 +3,28 @@
 A manual development-workflow mode that encodes Vuong's preferred way of
 building software. Model-agnostic and stack-agnostic.
 
-## How to use
+## Example prompts
 
-1. **Trigger it.** Type `/vm` (or `/skill:vm`) in your agent. It is manual; it
-   never auto-applies.
-2. **Let it check readiness.** vm verifies its required skills are installed.
-   If any is missing, it routes to `install-vm-skills --required` first.
-3. **Read, then route.** vm reads its Principles, matches your task to a
-   playbook, and copies the playbook's steps into the todolist verbatim.
-4. **Pick a playbook.**
-   - **Implementation.** Building or changing behavior. Clear requirements go
-     through `brainstorming`; foggy or bigger-than-one-session work goes
-     through `wayfinder`.
-   - **Investigation.** Understanding a thing, or answering "how or why does
-     this work". Uses the `research` role and ends in a cited answer or a
-     proposed fix.
-5. **Delegate what is isolated.** Anything unrelated to the main thread goes to
-   a subagent role: `watchdog` (drive a PR to green), `general` (clear brief,
-   let it do its best), or `research` (build the picture).
+- "Work in vuong mode" -> activates `/vm`. vm checks its required skills; if
+  any is missing, it runs `install-vm-skills --required`.
+- "How does the auth flow work?" -> investigation playbook with the `research`
+  role. Returns a cited answer, not a summary.
+- "Why was this table added?" -> investigation. Ends in a cited answer or a
+  proposed fix.
+- "Build the export feature" -> implementation playbook. Clear scope goes
+  through `brainstorming`; foggy or big scope goes through `wayfinder`.
+- "Babysit PR #123 until it's green" -> the `watchdog` role. It drives the PR
+  to green, then stops and reports.
+- "Handle this small thing separately" -> the `general` role with a clear,
+  self-contained brief.
+
+## What happens on /vm
+
+1. vm checks its required skills. Missing one? It runs
+   `install-vm-skills --required` first.
+2. It reads the Principles in full, then the matched playbook.
+3. It copies the playbook steps into the todolist verbatim. A skipped step
+   stays with `skip: <reason>`.
 
 ## Roles
 
@@ -28,14 +32,14 @@ building software. Model-agnostic and stack-agnostic.
 - **general** handles isolated work with a clear brief.
 - **research** builds the picture and returns a cited report.
 
-Full details, including when to use each and what to ask, live in
-`references/roles.md`.
+Full details live in `references/roles.md`.
 
 ## Install and update
 
-- Install everything, or just what vm needs:
-  `python3 install-vm-skills/scripts/install.py --all` or `--required`.
-- Refresh installed skills to their latest: `npx skills update -g`.
+- `python3 install-vm-skills/scripts/install.py --all` installs everything.
+- `python3 install-vm-skills/scripts/install.py --required` installs just what
+  vm needs.
+- `npx skills update -g` refreshes installed skills to latest.
 
 ## Making it yours
 
