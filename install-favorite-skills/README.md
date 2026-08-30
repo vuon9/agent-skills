@@ -21,9 +21,9 @@ stays updateable with `npx skills update`.
 - `python3 scripts/manage.py add <name> --source <repo>` adds a favorite (or
   changes its source). `python3 scripts/manage.py remove <name>` removes it.
 - After any change, run `python3 scripts/install.py` to apply it locally.
-- `code-teach`, `how`, and `why` are vendored from cursor/plugins. `code-teach` is
-  refreshed with `python3 scripts/sync_cursor.py`. `how` and `why` are
-  normalized for editor-agnostic use, so refresh them manually and re-apply
-  the edits.
+- `code-teach`, `bro`, `how`, `unslop`, and `why` are vendored from cursor/plugins.
+  `sync_cursor.py` refreshes the unmodified ones (`code-teach`, `bro`, `unslop`).
+  `how` and `why` are normalized for editor-agnostic use, so refresh them
+  manually and re-apply the edits.
 - Some installed skills are local-only and are listed with `"source": "local"`.
   They are skipped by the installer and must be kept manually.
