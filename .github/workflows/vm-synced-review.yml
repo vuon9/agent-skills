@@ -28,7 +28,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
-    uses: vuon9/gh-workflows/.github/workflows/ai-code-review.yml@v0.4.0
+    uses: vuon9/gh-workflows/.github/workflows/ai-code-review.yml@v0.4.1
     with:
       mode: pr
       comment-marker: skills-verify
