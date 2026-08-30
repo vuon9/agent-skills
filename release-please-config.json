@@ -1,0 +1,9 @@
+{
+  "packages": {
+    ".": {
+      "package-name": "agent-skills",
+      "release-type": "simple",
+      "include-component-in-tag": false
+    }
+  }
+}

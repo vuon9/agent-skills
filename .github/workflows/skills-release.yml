@@ -1,0 +1,29 @@
+name: skills-release
+
+# Cut a release with release-please (the go-please flow). On push to main it
+# reads the conventional commits since the last release, opens or updates a
+# single release PR whose description groups changes into typed lists, and
+# creates the tag and GitHub release when that PR merges.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          # Use GITHUB_TOKEN. If you need the release PR to trigger CI on its
+          # own commits, switch to a PAT and pass it via RELEASE_PLEASE_TOKEN.
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: simple
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
