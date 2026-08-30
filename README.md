@@ -18,7 +18,7 @@ single source of truth for what gets installed).
 ## Approaches
 
 - Free to install: Using the first command you see in the **Install** part to choose skills and install whatever you wanted
-- Using `/vm` skill as main: To try my preferred way to work on things by using `vm` skill first, then read its details on `vm`'s README to having more context
+- Wanted to try `vm`: It's my preferred way to start working on things, install `vm` and read its README to having more context
 
 ## Skills
 
