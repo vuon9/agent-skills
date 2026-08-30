@@ -6,8 +6,7 @@ name: vm-synced-review
 # Reuses the opencode AI review reusable workflow (muse-spark model, the same
 # setup used in devtoolbox). The reusable posts the report and converges it to a
 # single comment per PR, so re-runs upsert instead of stacking. The verification
-# logic lives in .agents/skills/skills-verify/SKILL.md and is handed to the
-# agent as the prompt.
+# steps are handed to the agent as a self-contained prompt below.
 
 on:
   pull_request:
@@ -31,7 +30,7 @@ jobs:
     uses: vuon9/gh-workflows/.github/workflows/ai-code-review.yml@v0.4.1
     with:
       mode: pr
-      comment-marker: skills-verify
+      comment-marker: vm-synced-review
       model: opencode/muse-spark-1.2-contributor-free
       prompt: |
         READ-ONLY review of this PR's changes to the skills collection. Read files and post a short comment. Do NOT run shell commands. Do NOT modify files, push, or install anything. If you want to show file content, only use your read tool.
