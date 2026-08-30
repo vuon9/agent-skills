@@ -34,13 +34,11 @@ jobs:
       comment-marker: skills-verify
       model: opencode/muse-spark-1.2-contributor-free
       prompt: |
-        Run the collection verification described in `.agents/skills/skills-verify/SKILL.md` against this PR, in this order:
+        READ-ONLY review of this PR's changes to the skills collection. Read files and post a short comment. Do NOT run shell commands. Do NOT modify files, push, or install anything. If you want to show file content, only use your read tool.
         1. Read `install-vm-skills/favorites.json` and `vm/SKILL.md`.
         2. Confirm the `vm/SKILL.md` `## Required skills` list and the manifest's `required: true` set match in both directions.
-        3. Validate every manifest entry: `name` matches its SKILL.md frontmatter (and folder when local), `source` is an owner/repo, a full GitHub tree URL, or `local`, `scope` is mine/external, and mine sources point at `vuon9/*`.
-        4. Quality-check skills in this repo: SKILL.md frontmatter `name` uses letters/numbers/hyphens, `description` starts with "Use when", and a README.md exists next to SKILL.md.
-        5. Confirm `vm/playbooks/*` and `vm/references/*` exist and are referenced.
-        If the two lists diverge, reconcile: use `install-vm-skills/scripts/manage.py add|remove|set-required`, and update the `vm/SKILL.md` `## Required skills` list. If the runner can safely edit the branch, apply and push; otherwise list the exact commands and the vm edit.
-        Post a SHORT comment report (about 6 to 12 lines): what the PR changed (added, removed, or re-scoped skills), any mismatch found and how it was reconciled (or the exact command the author should run), and the pass or fail verdict. Edit your previous comment instead of adding a new one.
+        3. For each manifest entry, confirm `name` matches its SKILL.md frontmatter (and the folder when the skill lives in this repo), `source` is an owner/repo or a full GitHub tree URL or `local`, `scope` is mine/external, and a mine source points at `vuon9/*`.
+        4. For skills in this repo, confirm SKILL.md frontmatter `name` uses letters/numbers/hyphens, `description` starts with "Use when", and a README.md exists next to SKILL.md.
+        Post a SHORT comment (6 to 12 lines): what this PR changed (added, removed, or re-scoped skills), any mismatch found and the exact `install-vm-skills/scripts/manage.py` command to fix it, and the pass or fail verdict.
     secrets:
       OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
