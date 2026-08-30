@@ -3,14 +3,17 @@
 Catalog and reinstall Vuong's agent skills (written + preferred from other
 authors) via a single manifest (`favorites.json`).
 
-## How to use
+## Example prompts
 
-1. **Install everything** for a fresh setup: `python3 scripts/install.py --all`.
-2. **Or install just what vm needs:** `python3 scripts/install.py --required` (vm routes here automatically when a required skill is missing).
-3. **Edit the list** with `scripts/manage.py`, then re-run `install.py` to apply.
-4. **Refresh to latest** anytime: `npx skills update -g`.
+- "Install all my skills" -> `python3 scripts/install.py --all`
+- "Install what vm needs" -> `python3 scripts/install.py --required`
+- "Install only my own skills" -> `python3 scripts/install.py --mine`
+- "Add the skill 'foo' from 'bar/repo'" -> `python3 scripts/manage.py add foo --source bar/repo`
+- "Add 'foo' as mine and required by vm" -> `python3 scripts/manage.py add foo --source bar/repo --scope mine --required`
+- "Remove 'foo'" -> `python3 scripts/manage.py remove foo`
+- "Refresh everything to latest" -> `npx skills update -g`
 
-## Use
+## Scripts
 
 - `python3 scripts/manage.py`. List, add, remove, change source, mark required.
 - `python3 scripts/install.py`. Install/refresh. Filters: `--mine`, `--external`,
