@@ -19,7 +19,7 @@ single source of truth for what gets installed).
 
 ### Written by me
 
-- [vm](./vm/SKILL.md). Vuong's manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
+- [vm](./vm/SKILL.md). vuong mode, the manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
 - [install-vm-skills](./install-vm-skills/SKILL.md). Install and refresh this collection from `favorites.json`
 - [shipping-darwin-apps](./shipping-darwin-apps/SKILL.md). Build and ship iOS/macOS apps (signing, notarization, TestFlight, DMG)
 - [gh-workflows](https://github.com/vuon9/gh-workflows). Reusable GitHub Actions workflows

@@ -1,4 +1,4 @@
-# vm (vuong mode)
+# vm
 
 A manual development-workflow mode that encodes Vuong's preferred way of
 building software. Model-agnostic and stack-agnostic.
@@ -8,7 +8,7 @@ building software. Model-agnostic and stack-agnostic.
 Say what you want in plain words. Prompts come first; the scripts below are
 only the fallback.
 
-- "Work in vuong mode" -> activates `/vm`. vm checks its required skills; if
+- "Work in vm mode" -> activates `/vm`. vm checks its required skills; if
   any is missing, it runs `install-vm-skills --required`.
 - "How does the auth flow work?" -> investigation playbook with the `research`
   role. Returns a cited answer, not a summary.
@@ -36,6 +36,22 @@ only the fallback.
 - **research** builds the picture and returns a cited report.
 
 Full details live in `references/roles.md`.
+
+## Why the rules live in two layers
+
+vm follows poteto-mode's shape: triggers and principles.
+
+- **Triggers** (Non-negotiables) are moment-of-recognition routing. The agent
+  scans them while working; the moment a situation appears, the matching line
+  fires.
+- **Principles** are read-first grounding. The opener forces the agent to read
+  them in full at the start, and the reply rule says to name each principle
+  that shaped a decision. A rule must exist as a principle, or the citation
+  rule can't reference it.
+
+That's why a rule like "keep generated docs local" appears twice: once as a
+trigger (fires at the moment) and once as a principle (the standing rule read
+up front and cited). If you change such a rule, edit both places.
 
 ## Scripts (additional)
 

@@ -4,7 +4,7 @@ description: Vuong's preferred development workflow for any kind of software. A 
 disable-model-invocation: true
 ---
 
-# vm (vuong mode)
+# vm
 
 A manual mode for building software the way Vuong would. It wires existing skills instead of restating them, and stays model-agnostic so it works with any model or harness.
 
