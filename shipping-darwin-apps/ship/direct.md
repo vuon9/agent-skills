@@ -197,4 +197,4 @@ Before reporting the release pipeline ready:
 5. The artifact exists, with branch artifact versus tag release asset clearly stated.
 6. The report includes the workflow run URL and artifact name without revealing secrets.
 
-Reusable `workflow_call` design details live in the `github-reusable-workflows` skill.
+Reusable `workflow_call` design details live in the `gh-workflows` skill in the `vuon9/gh-workflows` repo.

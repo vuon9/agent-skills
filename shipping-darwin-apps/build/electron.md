@@ -55,4 +55,4 @@ xcrun stapler validate "dist/<App>-<version>-<arch>.dmg"
 - The signing identity must be in the keychain with its private key, or `CSC_NAME`/keychain import must supply it. Otherwise electron-builder falls back to ad-hoc signing, which fails Gatekeeper.
 - `gatekeeperAssess: false` is normal during build; do the real `spctl` assessment after stapling (see [ship/direct.md](../ship/direct.md)).
 - The version in `package.json` and the app display name must match the identity you registered.
-- For CI, wire this build into the reusable workflow (see the `github-reusable-workflows` skill).
+- For CI, wire this build into the reusable workflow (see the `gh-workflows` skill in the `vuon9/gh-workflows` repo).

@@ -17,7 +17,6 @@ and agents to install.
 
 | Skill | Description |
 |-------|-------------|
-| [github-reusable-workflows](./github-reusable-workflows/SKILL.md) | GitHub Actions reusable workflow contracts, thin wrappers, secrets, local preflight, and versioning guardrails |
 | [shipping-darwin-apps](./shipping-darwin-apps/SKILL.md) | Build and ship iOS/macOS apps (native, Wails, Tauri, Electron, Go/Rust): readiness, build, signing, notarization, TestFlight, App Store, DMG |
 
 Each skill folder includes a `README.md` with human-facing use cases. `SKILL.md`
