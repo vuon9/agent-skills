@@ -18,7 +18,8 @@ Remaining triggers.
 - Implementation, foggy or bigger than one session -> open `wayfinder`.
 - Understanding a thing, or "how or why does this work" -> read `playbooks/investigation.md` and use the `research` role.
 - Scoped unit or functional change -> use `test-driven-development`.
-- Before asking the user a "which approach" fork -> check if the answer is observable, prototype instead. The ask is the slow path.
+- Before asking the user a "which approach" fork -> check whether the answer is observable, then probe; reserve the ask for a preference call.
+- A pattern that keeps repeating -> suggest distilling it into a small skill; ask the user first.
 - Writing any prose, PR, commit, or doc -> run `unslop`. Your reply is a prose surface.
 - Local review work -> use `hunk-review`.
 - Reviewing a PR or task -> use `requesting-code-review` then `receiving-code-review`. Confirm the report before posting to GitHub.
@@ -64,7 +65,7 @@ Comments follow the same rule as the reply. Write them clean as you go. A flat "
 
 ## Roles
 
-Three model-agnostic capabilities. Read `references/roles.md` for when to use each and what to ask.
+Three model-agnostic capabilities. Read `references/roles.md` for when to use each and what to ask. You own every subagent's work: review its diff, write your own summary, never pass through what it said.
 
 - **watchdog** drives a PR to green, then stops with a report.
 - **general** handles isolated work with a clear brief.
