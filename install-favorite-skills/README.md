@@ -5,6 +5,7 @@ repositories via a single manifest (`favorites.json`).
 
 ## Use
 
+- `scripts/manage.py` — list, add, remove, or change the source of favorites.
 - `scripts/install.sh` — install or refresh every skill in `favorites.json`.
 - `scripts/update.sh` — refresh installed git-sourced skills to latest.
 
@@ -16,7 +17,8 @@ stays updateable with `npx skills update`.
 
 ## Notes
 
-- Skills can be added by editing `favorites.json` (see `SKILL.md` for the
-  schema).
-- Some installed skills are local-only and are listed with `"source": "local"`
-  so the installer skips them.
+- `python3 scripts/manage.py add <name> --source <repo>` adds a favorite (or
+  changes its source). `python3 scripts/manage.py remove <name>` removes it.
+- After any change, run `bash scripts/install.sh` to apply it locally.
+- Some installed skills are local-only and are listed with `"source": "local"`.
+  They are skipped by the installer and must be kept manually.
