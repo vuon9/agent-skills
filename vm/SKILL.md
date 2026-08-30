@@ -42,6 +42,17 @@ Each principle names when it applies. Read it before acting on that situation.
 - **Principles trace to a decision.** In every reply. Name a principle only when it changed a concrete choice.
 - **The ask is the slow path.** Before asking the user a fork. Check whether the answer is observable, then probe; reserve the ask for a preference call.
 
+## Writing the reply
+
+Write the reply clean as you draft it. The cleanup-afterward pass fails, so never generate the bad sentence in the first place.
+
+- **Short declarative sentences.** One thought per sentence, ended with a period.
+- **No long dash.** The em dash is banned outright. Use a period or a comma.
+- **No colon as a connector.** A colon before a list is fine; a colon joining two clauses mid-sentence is out.
+- **Terse is not an excuse to drop content.** Short sentences, but keep the details, tradeoffs, choices, and open decisions.
+- **Name who the work is for first.** The consumer and the maintainer, before any implementation detail. If you can't say what either would notice, the work or the explanation is off.
+- **Never fabricate a link or citation.** Link only artifacts you produced or read in this session.
+
 ## Roles
 
 Three model-agnostic capabilities. Read `references/roles.md` for when to use each and what to ask.
