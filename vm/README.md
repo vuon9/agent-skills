@@ -3,7 +3,10 @@
 A manual development-workflow mode that encodes Vuong's preferred way of
 building software. Model-agnostic and stack-agnostic.
 
-## Example prompts
+## Use it with a prompt
+
+Say what you want in plain words. Prompts come first; the scripts below are
+only the fallback.
 
 - "Work in vuong mode" -> activates `/vm`. vm checks its required skills; if
   any is missing, it runs `install-vm-skills --required`.
@@ -34,7 +37,9 @@ building software. Model-agnostic and stack-agnostic.
 
 Full details live in `references/roles.md`.
 
-## Install and update
+## Scripts (additional)
+
+Only needed when you want the underlying commands directly.
 
 - `python3 install-vm-skills/scripts/install.py --all` installs everything.
 - `python3 install-vm-skills/scripts/install.py --required` installs just what
