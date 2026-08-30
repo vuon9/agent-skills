@@ -11,8 +11,8 @@ Catalog the user's preferred skills in `favorites.json` (each entry has a `sourc
 
 - `favorites.json` — the manifest. Array of `{ "name", "source" }` entries.
 - `scripts/manage.py` — list, add, remove, or change the source of entries.
-- `scripts/install.sh` — installs or refreshes every entry. Idempotent.
-- `scripts/update.sh` — runs `npx skills update -g` to refresh installed git-sourced skills.
+- `scripts/install.py` — installs or refreshes every entry. Idempotent.
+- `scripts/update.py` — runs `npx skills update -g` to refresh installed git-sourced skills.
 
 ## Manifest format
 
@@ -59,14 +59,14 @@ Notes:
 After any change, re-apply the manifest, then optionally refresh:
 
 ```bash
-bash scripts/install.sh    # install/refresh every listed skill (swaps sources as needed)
-bash scripts/update.sh     # refresh installed git-sourced skills to latest
+python3 scripts/install.py    # install/refresh every listed skill (swaps sources as needed)
+python3 scripts/update.py     # refresh installed git-sourced skills to latest
 ```
 
 ## How it behaves
 
 - Every `source != "local"` entry is installed from its upstream repo, so it stays updateable.
-- If a skill is installed from a **different** source than the manifest, `install.sh` removes the old one first so the manifest source wins (useful when switching e.g. `bro`/`teach` from one repo to another).
+- If a skill is installed from a **different** source than the manifest, `install.py` removes the old one first so the manifest source wins (useful when switching e.g. `bro`/`teach` from one repo to another).
 - `local` entries are skipped.
 - `--full-depth` is always passed to `npx skills add` so nested skills (for example `cursor/plugins` under `pstack/skills/`) are found.
 

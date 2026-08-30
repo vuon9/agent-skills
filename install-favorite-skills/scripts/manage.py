@@ -7,7 +7,7 @@ Commands:
   remove <name>                 Remove a favorite from the manifest.
   set-source <name> <repo>      Change only the source of an existing favorite.
 
-After any change, run scripts/install.sh to apply it to the local machine.
+After any change, run scripts/install.py to apply it to the local machine.
 """
 import argparse
 import json
