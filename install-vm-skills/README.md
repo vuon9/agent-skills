@@ -3,7 +3,10 @@
 Catalog and reinstall Vuong's agent skills (written + preferred from other
 authors) via a single manifest (`favorites.json`).
 
-## Example prompts
+## Use it with a prompt
+
+Say what you want in plain words. Prompts come first; the scripts below are
+only the fallback.
 
 - "Install all my skills" -> `python3 scripts/install.py --all`
 - "Install what vm needs" -> `python3 scripts/install.py --required`
@@ -13,7 +16,9 @@ authors) via a single manifest (`favorites.json`).
 - "Remove 'foo'" -> `python3 scripts/manage.py remove foo`
 - "Refresh everything to latest" -> `npx skills update -g`
 
-## Scripts
+## Scripts (additional)
+
+Only needed when you want the underlying commands directly.
 
 - `python3 scripts/manage.py`. List, add, remove, change source, mark required.
 - `python3 scripts/install.py`. Install/refresh. Filters: `--mine`, `--external`,
