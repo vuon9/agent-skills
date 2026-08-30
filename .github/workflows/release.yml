@@ -1,13 +1,11 @@
 name: release
 
-# Cut a release with release-please (the go-please flow). On push to main it
-# reads the conventional commits since the last release, opens or updates a
-# single release PR whose description groups changes into typed lists, and
-# creates the tag and GitHub release when that PR merges.
+# Cut a release with release-please (the go-please flow). Trigger manually (you
+# don't need it automatic yet). It reads the conventional commits since the last
+# release, opens or updates a single release PR whose description groups changes
+# into typed lists, and creates the tag and GitHub release when that PR merges.
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

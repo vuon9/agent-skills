@@ -62,7 +62,7 @@ When the two lists diverge, fix the manifest and `vm` together, not just one.
 
 ## CI behavior
 
-A GitHub Actions workflow (`review`) runs this on every pull request that changes `favorites.json` or `vm/**`. It uses `opencode/muse-spark-1.2-contributor-free` to do the check and post a short comment report on the PR.
+A GitHub Actions workflow (`vm-synced-review`) runs this on every pull request that changes `favorites.json` or `vm/**`. It uses `opencode/muse-spark-1.2-contributor-free` to do the check and post a short comment report on the PR.
 
 - **Trigger.** `pull_request` with types `opened`, `synchronize`, `reopened`, `ready_for_review`, filtered to the two paths above. A new commit to the branch (`synchronize`) re-runs it.
 - **Upsert, not append.** The agent edits its own previous comment on re-runs instead of posting a fresh one. Do not post multiple comments; keep one authoritative report.
