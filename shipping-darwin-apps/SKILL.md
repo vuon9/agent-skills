@@ -69,4 +69,4 @@ flowchart LR
 | Staple + verify | `xcrun stapler staple <file>; xcrun stapler validate <file>` |
 | Gatekeeper assess (app/DMG) | `spctl --assess --type execute --verbose=4 <app>` / `--type open --context context:primary-signature <dmg>` |
 
-Cross-reference: reusable `workflow_call` contracts live in the `github-reusable-workflows` skill.
+Cross-reference: reusable `workflow_call` contracts live in the `gh-workflows` skill in the `vuon9/gh-workflows` repo.

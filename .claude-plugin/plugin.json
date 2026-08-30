@@ -1,0 +1,9 @@
+{
+  "name": "vuong-skills",
+  "version": "1.0.0",
+  "description": "Vuong's collection of agent skills.",
+  "license": "MIT",
+  "skills": [
+    "./shipping-darwin-apps"
+  ]
+}

@@ -118,4 +118,4 @@ Report only after verification. Include:
 - Missing signing identity preflight: either install a distribution identity or use an automatic-signing workflow that supports skipping local cert preflight.
 - Reusable workflow checkout failure: ensure the workflow checks out tools using the called workflow repository and SHA, not the caller repository SHA.
 
-Workflow `workflow_call` design details live in the `github-reusable-workflows` skill.
+Workflow `workflow_call` design details live in the `gh-workflows` skill in the `vuon9/gh-workflows` repo.
