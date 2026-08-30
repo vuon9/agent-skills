@@ -46,24 +46,14 @@ Read only what you need. Start here, then open the doc the repo signal points to
 
 ## Framework routing
 
-```dot
-digraph framework {
-    rankdir=LR;
-    "Start here" [shape=doublecircle];
-    "What builds the Apple target?" [shape=diamond];
-    "build/native.md" [shape=box];
-    "build/wails.md" [shape=box];
-    "build/tauri.md" [shape=box];
-    "build/electron.md" [shape=box];
-    "build/go-rust.md" [shape=box];
-
-    "Start here" -> "What builds the Apple target?";
-    "What builds the Apple target?" -> "build/native.md" [label=".xcodeproj / Package.swift"];
-    "What builds the Apple target?" -> "build/wails.md" [label="wails.json"];
-    "What builds the Apple target?" -> "build/tauri.md" [label="tauri.conf.json"];
-    "What builds the Apple target?" -> "build/electron.md" [label="package.json + electron"];
-    "What builds the Apple target?" -> "build/go-rust.md" [label="go.mod / Cargo.toml"];
-}
+```mermaid
+flowchart LR
+    Start([Start here]) --> Q{"What builds the Apple target?"}
+    Q -->|".xcodeproj / Package.swift"| native["build/native.md"]
+    Q -->|"wails.json"| wails["build/wails.md"]
+    Q -->|"tauri.conf.json"| tauri["build/tauri.md"]
+    Q -->|"package.json + electron"| electron["build/electron.md"]
+    Q -->|"go.mod / Cargo.toml"| gorust["build/go-rust.md"]
 ```
 
 ## Quick reference
