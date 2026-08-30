@@ -53,6 +53,15 @@ Write the reply clean as you draft it. The cleanup-afterward pass fails, so neve
 - **Name who the work is for first.** The consumer and the maintainer, before any implementation detail. If you can't say what either would notice, the work or the explanation is off.
 - **Never fabricate a link or citation.** Link only artifacts you produced or read in this session.
 
+## Comments
+
+Comments follow the same rule as the reply. Write them clean as you go. A flat "no narrating comments" ban doesn't catch them; you have to not write them in the first place.
+
+- **No narrating comments.** A `// Phase 1: add cards` line above a block is out. The assertion or log string is the only doc you need.
+- **Say it in the assertion.** Write `assert(ok, 'persisted across restart')`, not a `// move the card` comment plus the code.
+- **Keep a comment only for a non-obvious why.** If the code can't show the reason, comment it. Otherwise don't.
+- **Applies everywhere.** Every file you produce, including subagent diffs and verify scripts.
+
 ## Roles
 
 Three model-agnostic capabilities. Read `references/roles.md` for when to use each and what to ask.
