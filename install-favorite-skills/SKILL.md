@@ -21,13 +21,13 @@ Catalog the user's preferred skills in `favorites.json` (each entry has a `sourc
   "skills": [
     { "name": "gh-workflows", "source": "vuon9/gh-workflows" },
     { "name": "bro", "source": "cursor/plugins" },
-    { "name": "cua-driver", "source": "local", "note": "installed manually" }
+    { "name": "cua-driver", "source": "https://github.com/trycua/cua/tree/main/libs/cua-driver/rust/Skills/cua-driver" }
   ]
 }
 ```
 
 - `name` — the skill name (must match the `name:` in its `SKILL.md`).
-- `source` — an `owner/repo` GitHub source, or `local` for skills that are not re-installable from a repo.
+- `source` — an `owner/repo` GitHub source, a full GitHub tree URL pointing at a nested skill, or `local` for a manually-managed skill that has no repo source.
 - `note` — optional; only used for `local` entries.
 
 ## Manage the list
@@ -72,6 +72,7 @@ bash scripts/update.sh     # refresh installed git-sourced skills to latest
 
 ## Notes
 
-- Not every skill is re-installable: a few (`cua-driver`, `hunk-review`) are `local` and must be kept manually.
+- A `source` may be a full GitHub tree URL that points at a nested skill; it installs the same as an `owner/repo` source. `local` is reserved for manually-managed skills with no repo source.
 - The manifest is the single source of truth for the desired set, not the global install state. Regenerate it from `npx skills list -g` (or `~/.agents/.skill-lock.json`) when the user's collection changes.
 - After adding a skill here, also add it to `.claude-plugin/plugin.json` and the collection `README.md` to keep it grouped and documented.
+- If a skill already exists locally but was not instalLed from a repo (for example the older `cua-driver`/`hunk-review`), the first install adopts or overwrites it; `npx skills remove <name> -g -y` first if you want a clean start.
