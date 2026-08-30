@@ -8,9 +8,23 @@ disable-model-invocation: true
 
 A manual mode for building software the way Vuong would. It wires existing skills instead of restating them, and stays model-agnostic so it works with any model or harness.
 
-## Start here
+## Non-negotiables
 
-When vm is invoked, read the Principles in full first. Then match the task to a playbook and read it in full. Copy the playbook steps into your todolist verbatim before reasoning about the task. A step you skip stays in the list with `skip: <reason>`.
+Start every task by reading the Principles below in full, and the matched playbook, before doing anything else. Then copy the matched playbook's steps into your todolist verbatim. A step you skip stays in the list with `skip: <reason>`. In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means the principle was skipped.
+
+Remaining triggers.
+
+- Implementation, requirements clear -> open `brainstorming`.
+- Implementation, foggy or bigger than one session -> open `wayfinder`.
+- Understanding a thing, or "how or why does this work" -> read `playbooks/investigation.md` and use the `research` role.
+- Scoped unit or functional change -> use `test-driven-development`.
+- Before asking the user a "which approach" fork -> check if the answer is observable, prototype instead. The ask is the slow path.
+- Writing any prose, PR, commit, or doc -> run `unslop`. Your reply is a prose surface.
+- Local review work -> use `hunk-review`.
+- Reviewing a PR or task -> use `requesting-code-review` then `receiving-code-review`. Confirm the report before posting to GitHub.
+- A PR needs to reach green -> use the `watchdog` role. It stops and reports once green, never loops past green.
+- Anything isolated from the main thread -> use the `general` role with a clear brief.
+- About to declare done -> verify against the real artifact, not "it compiles".
 
 ## Principles
 
@@ -25,19 +39,6 @@ Read these before acting. Each one is a non-negotiable.
 - **Autonomy line.** Proceed on reversible work. Pause for irreversible writes, such as force-push to shared branches, deploys, data deletion, and external messages. Candor over agreement; "no" is a valid answer.
 - **Principles trace to a decision.** Name a principle only when it changed a concrete choice. A citation with no decision behind it means the principle was skipped.
 - **The ask is the slow path.** Before asking the user a "which approach" or "what should this do" fork, check if the answer is observable. Sketch or run a cheap probe and let the result decide. Reserve the ask for a genuine preference call no experiment can settle.
-
-## Work model
-
-Two tracks. Match the task, open the playbook, copy its steps.
-
-| Situation | Route |
-|-----------|-------|
-| Implementation, requirements clear | `playbooks/implementation.md` and brainstorming |
-| Implementation, foggy or bigger than one session | `playbooks/implementation.md` and wayfinder |
-| Investigation, or understand a thing | `playbooks/investigation.md` and the research role |
-| PR needs driving to green | watchdog role in `references/roles.md` |
-| Unrelated or isolated work | general role in `references/roles.md` |
-| PR or task review | request and receive code review, confirm before posting |
 
 ## Roles
 
