@@ -4,6 +4,7 @@
   "description": "Vuong's collection of agent skills.",
   "license": "MIT",
   "skills": [
+    "./install-favorite-skills",
     "./shipping-darwin-apps"
   ]
 }
