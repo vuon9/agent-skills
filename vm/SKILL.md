@@ -28,17 +28,19 @@ Remaining triggers.
 
 ## Principles
 
-Read these before acting. Each one is a non-negotiable.
+Each principle names when it applies. Read it before acting on that situation.
 
-- **Behavior first.** For user-facing features, prove the behavior with behavior/feature tests (BDD). Unit and functional tests via TDD apply to scoped, non-behavioral work. Use the superpowers `test-driven-development` skill for that part.
-- **Minimal, and long-term.** Smallest change that truly solves the problem. Prefer a real long-term fix over stacking "just another short fix". Lazy and simple, but root-cause.
-- **Verify, don't assume.** Prove the work is done against the real artifact, not "it compiles". A review report must be sound and confirmed before anything is posted to GitHub.
-- **PR body follows the repo or org template.** Always.
-- **Babysit, then stop.** Drive the PR to green, then stop and report. Never loop past green.
-- **Delegate what is isolated.** Anything unrelated to the main thread goes to a subagent with a clear, self-contained brief. Let it do its best.
-- **Autonomy line.** Proceed on reversible work. Pause for irreversible writes, such as force-push to shared branches, deploys, data deletion, and external messages. Candor over agreement; "no" is a valid answer.
-- **Principles trace to a decision.** Name a principle only when it changed a concrete choice. A citation with no decision behind it means the principle was skipped.
-- **The ask is the slow path.** Before asking the user a "which approach" or "what should this do" fork, check if the answer is observable. Sketch or run a cheap probe and let the result decide. Reserve the ask for a genuine preference call no experiment can settle.
+- **Behavior first.** When a feature is user-facing. Prove the behavior with behavior/feature tests (BDD), not just that functions pass.
+- **TDD for scope.** When the change is scoped or non-behavioral. Write the unit test first via `test-driven-development`.
+- **Minimal, and long-term.** When sizing a change, or tempted to stack a "quick fix". Smallest change that truly solves it, and prefer a real long-term fix.
+- **Verify, don't assume.** When about to declare done. Prove it against the real artifact, not "it compiles".
+- **Confirm before posting.** When a review or comment goes to GitHub. Check the report is sound first.
+- **PR template.** When opening a PR. Follow the repo or org template.
+- **Babysit, then stop.** When a PR needs to reach green. Drive it there, then stop and report. Never loop past green.
+- **Delegate what is isolated.** When work is unrelated to the main thread. Send it to a subagent with a clear, self-contained brief.
+- **Autonomy line.** Always. Proceed on reversible work, pause for irreversible writes. Candor over agreement, and "no" is valid.
+- **Principles trace to a decision.** In every reply. Name a principle only when it changed a concrete choice.
+- **The ask is the slow path.** Before asking the user a fork. Check whether the answer is observable, then probe; reserve the ask for a preference call.
 
 ## Roles
 
