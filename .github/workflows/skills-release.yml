@@ -21,9 +21,13 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          # Use GITHUB_TOKEN. If you need the release PR to trigger CI on its
-          # own commits, switch to a PAT and pass it via RELEASE_PLEASE_TOKEN.
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # release-please cannot create the PR with the built-in GITHUB_TOKEN
+          # on a push-to-main run (GitHub blocks it: "GitHub Actions is not
+          # permitted to create or approve pull requests"). Use a PAT instead;
+          # it also lets the resulting release PR trigger CI on its own commits.
+          # Create a fine-grained PAT with Contents: Read/Write and PRs: Read/Write
+          # and store it as the RELEASE_PLEASE_TOKEN secret.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           release-type: simple
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json

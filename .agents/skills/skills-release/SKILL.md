@@ -38,7 +38,10 @@ Use the repo's existing convention (this collection uses `feat(vm):`, `docs:`, `
 
 ## Permissions and token
 
-The action needs `contents: write` and `pull-requests: write`. Use `GITHUB_TOKEN` unless you need the resulting PR to trigger CI (CI on release PRs can fail to see the new changes for some triggers). If you use a managed PAT, set `RELEASE_PLEASE_TOKEN` and pass it as `token`.
+The action needs `contents: write` and `pull-requests: write`. It must use a **PAT**, not the built-in `GITHUB_TOKEN`: on a push-to-`main` run GitHub blocks `GITHUB_TOKEN` from creating the pull request (the error is `GitHub Actions is not permitted to create or approve pull requests`), and a PAT also lets the resulting release PR trigger CI on its own commits.
+
+- Create a fine-grained PAT with **Contents: Read/Write** and **Pull requests: Read/Write** (and **Workflows: Read/Write** if you want the release PR to run the collection's workflows).
+- Store it as the `RELEASE_PLEASE_TOKEN` secret; the workflow passes it as `token`.
 
 ## Config
 
