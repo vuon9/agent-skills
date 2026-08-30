@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
-"""Install every skill in favorites.json from its upstream source.
+"""Install skills from favorites.json from their upstream sources.
 
 Idempotent: rerunning it refreshes git-sourced skills. If a skill is already
 installed from a different source, it is removed first so the new source wins.
+
+Scopes:
+  --mine       skills written by vuong (scope: mine)
+  --external   skills from other authors (scope: external)
+  --required   the skills vm needs (required: true)
+  --all        everything (default)
 """
+import argparse
 import json
 import os
 import subprocess
@@ -29,8 +36,39 @@ def current_source(name):
     return entry.get("source") or entry.get("sourceType") or None
 
 
+def filter_skills(skills, scope):
+    if scope == "mine":
+        return [s for s in skills if s.get("scope") == "mine"]
+    if scope == "external":
+        return [s for s in skills if s.get("scope") != "mine"]
+    if scope == "required":
+        return [s for s in skills if s.get("required")]
+    return skills  # all
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Install skills from favorites.json.")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--mine", action="store_true", help="install vuong-written skills only")
+    group.add_argument("--external", action="store_true", help="install other authors' skills only")
+    group.add_argument("--required", action="store_true", help="install only the skills vm requires")
+    group.add_argument("--all", action="store_true", help="install everything (default)")
+    return parser.parse_args()
+
+
 def main():
-    skills = load_skills()
+    args = parse_args()
+    scope = "all"
+    if args.mine:
+        scope = "mine"
+    elif args.external:
+        scope = "external"
+    elif args.required:
+        scope = "required"
+
+    skills = filter_skills(load_skills(), scope)
+    print(f"scope: {scope}  |  entries: {len(skills)}")
+
     ok, failed = [], []
 
     for entry in skills:

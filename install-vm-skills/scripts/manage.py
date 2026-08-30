@@ -2,10 +2,12 @@
 """Manage the favorites.json manifest.
 
 Commands:
-  list                          Show current favorites (name + source).
+  list                          Show current favorites (name, source, scope, required).
   add <name> --source <repo>    Add a favorite, or change its source if it exists.
+    [--scope mine|external] [--required]
   remove <name>                 Remove a favorite from the manifest.
   set-source <name> <repo>      Change only the source of an existing favorite.
+  set-required <name> <true|false>  Mark a favorite as required by vm or not.
 
 After any change, run scripts/install.py to apply it to the local machine.
 """
@@ -42,19 +44,26 @@ def find(entries, name):
 def cmd_list(data):
     for entry in sorted(data["skills"], key=lambda s: s["name"]):
         source = entry.get("source", "?")
+        scope = entry.get("scope", "external")
+        required = "required" if entry.get("required") else ""
         suffix = f"  ({entry['note']})" if source == "local" and entry.get("note") else ""
-        print(f"{entry['name']}\t{source}{suffix}")
+        print(f"{entry['name']}\t{source}\t{scope}\t{required}{suffix}")
 
 
-def cmd_add(data, name, source):
+def cmd_add(data, name, source, scope, required):
     entry = find(data["skills"], name)
     if entry:
         entry["source"] = source
         entry.pop("note", None)
         print(f"updated {name} -> {source}")
     else:
-        data["skills"].append({"name": name, "source": source})
+        entry = {"name": name, "source": source}
+        data["skills"].append(entry)
         print(f"added {name} <- {source}")
+    if scope:
+        entry["scope"] = scope
+    if required:
+        entry["required"] = True
 
 
 def cmd_remove(data, name):
@@ -73,6 +82,15 @@ def cmd_set_source(data, name, source):
     print(f"{name} -> {source}")
 
 
+def cmd_set_required(data, name, value):
+    entry = find(data["skills"], name)
+    if not entry:
+        print(f"not found: {name}", file=sys.stderr)
+        sys.exit(1)
+    entry["required"] = value
+    print(f"{name} required={value}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Manage favorites.json.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -82,6 +100,8 @@ def main():
     p_add = sub.add_parser("add")
     p_add.add_argument("name")
     p_add.add_argument("--source", required=True)
+    p_add.add_argument("--scope", choices=["mine", "external"])
+    p_add.add_argument("--required", action="store_true")
 
     p_rm = sub.add_parser("remove")
     p_rm.add_argument("name")
@@ -90,6 +110,10 @@ def main():
     p_set.add_argument("name")
     p_set.add_argument("source")
 
+    p_req = sub.add_parser("set-required")
+    p_req.add_argument("name")
+    p_req.add_argument("value", type=lambda v: v.lower() in ("true", "1", "yes"))
+
     args = parser.parse_args()
     data = load()
 
@@ -97,11 +121,13 @@ def main():
         cmd_list(data)
         return
     if args.command == "add":
-        cmd_add(data, args.name, args.source)
+        cmd_add(data, args.name, args.source, args.scope, args.required)
     elif args.command == "remove":
         cmd_remove(data, args.name)
     elif args.command == "set-source":
         cmd_set_source(data, args.name, args.source)
+    elif args.command == "set-required":
+        cmd_set_required(data, args.name, args.value)
 
     save(data)
 

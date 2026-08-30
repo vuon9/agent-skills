@@ -10,7 +10,7 @@ A manual mode for building software the way Vuong would. It wires existing skill
 
 ## Non-negotiables
 
-Start every task by reading the Principles below in full, and the matched playbook, before doing anything else. Then copy the matched playbook's steps into your todolist verbatim. A step you skip stays in the list with `skip: <reason>`. In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means the principle was skipped.
+Start every task by checking the required skills are available, then reading the Principles below in full, and the matched playbook, before doing anything else. Then copy the matched playbook's steps into your todolist verbatim. A step you skip stays in the list with `skip: <reason>`. In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means the principle was skipped.
 
 Remaining triggers.
 
@@ -26,6 +26,20 @@ Remaining triggers.
 - A PR needs to reach green -> use the `watchdog` role. It stops and reports once green, never loops past green.
 - Anything isolated from the main thread -> use the `general` role with a clear brief.
 - About to declare done -> verify against the real artifact, not "it compiles".
+
+## Required skills
+
+vm depends on these. Check they are available when vm starts; if any is missing, run `install-vm-skills --required`.
+
+- `brainstorming`
+- `wayfinder`
+- `test-driven-development`
+- `unslop`
+- `hunk-review`
+- `requesting-code-review`
+- `receiving-code-review`
+
+Its own roles and playbooks ship inside vm.
 
 ## Principles
 
