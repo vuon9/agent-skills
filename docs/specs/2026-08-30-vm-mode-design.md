@@ -78,6 +78,12 @@ The identity file. Its sections, in order:
 - **Principles must trace to a decision.** Name a principle only when it
   changed a concrete choice. A citation with no decision behind it means the
   principle was skipped.
+- **Read before you reason.** When `/vm` fires, read the Principles in full and
+  the matched playbook before reasoning about the task. No silent assumptions.
+- **The ask is the slow path.** Before asking the user a "which approach" or
+  "what should this do" fork, check if the answer is observable. Sketch or run
+  a cheap probe and let the result decide. Reserve the ask for a genuine
+  preference call no experiment can settle.
 
 Nice-to-have: when a repeating pattern appears, suggest distilling it into a
 skill, and ask the harness user before doing so.
@@ -92,6 +98,10 @@ skill, and ask the harness user before doing so.
 | PR needs driving to green | watchdog role |
 | Unrelated / isolated work | general role |
 | PR/task review | request/receive code review, confirm before posting |
+
+Playbook steps are copied verbatim into the todolist before any task reasoning.
+A step chosen to skip stays in the list with a one-line `skip: reason`; skipping
+silently is not allowed.
 
 ## 5. `playbooks/implementation.md`
 
