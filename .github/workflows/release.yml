@@ -1,4 +1,4 @@
-name: skills-release
+name: release
 
 # Cut a release with release-please (the go-please flow). On push to main it
 # reads the conventional commits since the last release, opens or updates a

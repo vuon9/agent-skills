@@ -15,7 +15,7 @@ Cut a release of this collection with `release-please` (the go-please flow). It 
 
 ## How it works
 
-- `release-please` runs on push to `main` via `.github/workflows/skills-release.yml`.
+- `release-please` runs on push to `main` via `.github/workflows/release.yml`.
 - It reads the conventional commits since the last release tag/version, rolls them into a typed changelog, and opens a single release PR (for example `chore(main): release vX.Y.Z`).
 - The PR description is the changelog: a `## What's Changed` list grouped under type headings. Because it is derived from commit prefixes, the quality of the notes depends on the commit messages, so keep them conventional.
 
@@ -34,7 +34,7 @@ Use the repo's existing convention (this collection uses `feat(vm):`, `docs:`, `
 ## Release trigger
 
 - **Automatic.** Push to `main`. The action diffs against the last release and opens or updates the release PR.
-- **Manual.** `workflow_dispatch` is enabled. Use `gh workflow run skills-release.yml` to open one on demand.
+- **Manual.** `workflow_dispatch` is enabled. Use `gh workflow run release.yml` to open one on demand.
 
 ## Permissions and token
 

@@ -19,6 +19,6 @@ release into typed lists, derived from conventional commit messages.
 
 ## In CI
 
-`.github/workflows/skills-release.yml` uses `googleapis/release-please-action@v4`
+`.github/workflows/release.yml` uses `googleapis/release-please-action@v4`
 with `release-type: simple`. Config lives in `release-please-config.json` and
 `.release-please-manifest.json`.

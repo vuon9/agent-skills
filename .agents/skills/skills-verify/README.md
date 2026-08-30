@@ -19,7 +19,7 @@ every skill in this repo must be well-formed.
 
 ## In CI
 
-`.github/workflows/skills-verify.yml` runs it on every PR touching
+`.github/workflows/review.yml` runs it on every PR touching
 `install-vm-skills/favorites.json` or `vm/**`. It uses
 `opencode/muse-spark-1.2-contributor-free` and posts a short comment report on the
 PR. Re-runs update that one comment instead of adding new ones.

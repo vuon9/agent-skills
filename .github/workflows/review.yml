@@ -1,4 +1,4 @@
-name: skills-verify
+name: review
 
 # Verify the skills collection whenever a PR changes the manifest or vm.
 # Reuses the opencode AI review reusable workflow (muse-spark model, the same
@@ -20,7 +20,7 @@ on:
 # Only the newest run per PR executes; older in-flight runs are cancelled
 # instead of stacking up notifications.
 concurrency:
-  group: skills-verify-${{ github.event.pull_request.number || github.ref }}
+  group: review-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
