@@ -7,9 +7,10 @@
     "./bro",
     "./code-teach",
     "./how",
-    "./install-favorite-skills",
+    "./install-vm-skills",
     "./shipping-darwin-apps",
     "./unslop",
+    "./vm",
     "./why"
   ]
 }
