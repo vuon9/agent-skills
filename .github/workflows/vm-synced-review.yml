@@ -1,21 +1,17 @@
 name: vm-synced-review
 
-# Verify the skills collection whenever a PR changes the manifest or vm.
+# Verify the skills collection on every pull request, whenever it is opened
+# (opened, reopened, ready_for_review) and on each new push to the branch
+# (synchronize), so a PR is reviewed from the start and again as it changes.
 # Reuses the opencode AI review reusable workflow (muse-spark model, the same
 # setup used in devtoolbox). The reusable posts the report and converges it to a
 # single comment per PR, so re-runs upsert instead of stacking. The verification
 # logic lives in .agents/skills/skills-verify/SKILL.md and is handed to the
 # agent as the prompt.
-#
-# Triggered by opened, synchronize (new commit to the branch), reopened, and
-# ready_for_review, filtered to the two paths that can change the required set.
 
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths:
-      - "install-vm-skills/favorites.json"
-      - "vm/**"
 
 # Only the newest run per PR executes; older in-flight runs are cancelled
 # instead of stacking up notifications.
