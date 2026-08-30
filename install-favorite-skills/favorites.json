@@ -10,7 +10,7 @@
     },
     {
       "name": "bro",
-      "source": "cursor/plugins"
+      "source": "vuon9/agent-skills"
     },
     {
       "name": "code-teach",
@@ -106,7 +106,7 @@
     },
     {
       "name": "unslop",
-      "source": "cursor/plugins"
+      "source": "vuon9/agent-skills"
     },
     {
       "name": "verification-before-completion",

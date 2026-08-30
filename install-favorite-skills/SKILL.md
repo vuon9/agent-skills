@@ -17,13 +17,13 @@ Catalog the user's preferred skills in `favorites.json` (each entry has a `sourc
 
 ## Vendored cursor skills
 
-`code-teach`, `how`, and `why` are vendored copies of cursor/plugins' skills. The `skills` CLI cannot install a skill under a new name, so `code-teach` (cursor's `teach`) is renamed. `how` and `why` keep their own names but are edited: Cursor-specific wording ("the Cursor environment", "`mcps/` directory Cursor exposes", "Ask mode", "agent mode") was normalized so they work across editors.
+`code-teach`, `bro`, `how`, `unslop`, and `why` are vendored copies of cursor/plugins' skills. `code-teach` (cursor's `teach`) is renamed; `how` and `why` are edited to normalize Cursor-specific wording ("the Cursor environment", "`mcps/` directory Cursor exposes", "Ask mode", "agent mode") so they work across editors. `bro` and `unslop` needed no edits (they were already editor-agnostic).
 
-- `code-teach` is unmodified apart from its name, so `scripts/sync_cursor.py` refreshes it from upstream safely.
+- `code-teach`, `bro`, and `unslop` are unmodified apart from renames, so `scripts/sync_cursor.py` refreshes them from upstream safely.
 - `how` and `why` are edited. Do not re-clone them blindly from cursor; refresh manually and re-apply the normalization.
 
 ```bash
-python3 scripts/sync_cursor.py    # refresh code-teach only
+python3 scripts/sync_cursor.py    # refresh code-teach, bro, unslop
 ```
 
 ## Manifest format
