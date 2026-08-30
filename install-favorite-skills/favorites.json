@@ -58,7 +58,7 @@
     },
     {
       "name": "how",
-      "source": "cursor/plugins"
+      "source": "vuon9/agent-skills"
     },
     {
       "name": "hunk-review",
@@ -115,6 +115,10 @@
     {
       "name": "wayfinder",
       "source": "mattpocock/skills"
+    },
+    {
+      "name": "why",
+      "source": "vuon9/agent-skills"
     },
     {
       "name": "writing-plans",

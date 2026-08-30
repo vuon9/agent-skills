@@ -5,7 +5,9 @@
   "license": "MIT",
   "skills": [
     "./code-teach",
+    "./how",
     "./install-favorite-skills",
-    "./shipping-darwin-apps"
+    "./shipping-darwin-apps",
+    "./why"
   ]
 }

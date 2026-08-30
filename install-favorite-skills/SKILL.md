@@ -15,13 +15,15 @@ Catalog the user's preferred skills in `favorites.json` (each entry has a `sourc
 - `scripts/update.py` — runs `npx skills update -g` to refresh installed git-sourced skills.
 - `scripts/sync_cursor.py` — refreshes the vendored `code-teach` skill from cursor/plugins.
 
-## Vendored skill: code-teach
+## Vendored cursor skills
 
-`code-teach` in this collection is an alias of cursor/plugins' `teach` (the `skills` CLI cannot install a skill under a new name, so it is vendored and renamed). To refresh it from upstream:
+`code-teach`, `how`, and `why` are vendored copies of cursor/plugins' skills. The `skills` CLI cannot install a skill under a new name, so `code-teach` (cursor's `teach`) is renamed. `how` and `why` keep their own names but are edited: Cursor-specific wording ("the Cursor environment", "`mcps/` directory Cursor exposes", "Ask mode", "agent mode") was normalized so they work across editors.
+
+- `code-teach` is unmodified apart from its name, so `scripts/sync_cursor.py` refreshes it from upstream safely.
+- `how` and `why` are edited. Do not re-clone them blindly from cursor; refresh manually and re-apply the normalization.
 
 ```bash
-python3 scripts/sync_cursor.py    # rewrites ../code-teach/SKILL.md
-# commit + push, then run python3 scripts/install.py (or npx skills update)
+python3 scripts/sync_cursor.py    # refresh code-teach only
 ```
 
 ## Manifest format
