@@ -19,6 +19,6 @@ See `SKILL.md` for the routing table and guardrails.
 
 ## Model requirement
 
-Skill auto-discovery is unreliable on small "flash" models. Use a capable model
-such as `deepseek/deepseek-v4-pro` or `claude-sonnet-5`, or invoke the skill
-explicitly with `/skill:shipping-darwin-apps`.
+Skill auto-discovery is unreliable on small "flash" models. Use
+`deepseek/deepseek-v4-pro`, or invoke the skill explicitly with
+`/skill:shipping-darwin-apps`.

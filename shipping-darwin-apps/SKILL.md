@@ -1,7 +1,7 @@
 ---
 name: shipping-darwin-apps
 description: Use when building, compiling, packaging, signing, notarizing, or releasing apps for iOS or macOS, including native Xcode and cross-platform frameworks (Wails, Tauri, Electron, Go, Rust), or when setting up TestFlight uploads, App Store Connect API keys, reusable workflow wrappers, provisioning profiles, or Developer ID notarization.
-compatibility: Auto-discovery requires a capable model (e.g. deepseek/deepseek-v4-pro or claude-sonnet-5). Small flash-model agents may not auto-load this skill; invoke via /skill:shipping-darwin-apps as a fallback.
+compatibility: Auto-discovery requires a capable model (e.g. deepseek/deepseek-v4-pro). Small flash-model agents may not auto-load this skill; invoke via /skill:shipping-darwin-apps as a fallback.
 ---
 
 # Shipping Darwin Apps
