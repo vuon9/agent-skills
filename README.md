@@ -29,8 +29,6 @@ single source of truth for what gets installed).
 - [shipping-darwin-apps](./shipping-darwin-apps/SKILL.md). Build and ship iOS/macOS apps (signing, notarization, TestFlight, DMG)
 - [gh-workflows](https://github.com/vuon9/gh-workflows). Reusable GitHub Actions workflows
 
-Repo-local skills for this repo's own automation (not installed globally) live in `.agents/skills/`: `skills-verify` (collection verification CI).
-
 ### Copied from cursor/plugins, adjusted for editor-agnostic use
 
 - [bro](./bro/SKILL.md). Restate the last message in plain language (as-is)
