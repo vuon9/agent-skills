@@ -4,6 +4,10 @@
   "description": "Vuong's collection of agent skills.",
   "license": "MIT",
   "skills": [
-    "./shipping-darwin-apps"
+    "./code-teach",
+    "./how",
+    "./install-favorite-skills",
+    "./shipping-darwin-apps",
+    "./why"
   ]
 }

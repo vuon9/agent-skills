@@ -1,0 +1,132 @@
+{
+  "skills": [
+    {
+      "name": "apple-design",
+      "source": "emilkowalski/skills"
+    },
+    {
+      "name": "brainstorming",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "bro",
+      "source": "cursor/plugins"
+    },
+    {
+      "name": "code-teach",
+      "source": "vuon9/agent-skills"
+    },
+    {
+      "name": "cua-driver",
+      "source": "https://github.com/trycua/cua/tree/main/libs/cua-driver/rust/Skills/cua-driver"
+    },
+    {
+      "name": "diagnosing-bugs",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "executing-plans",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "find-skills",
+      "source": "vercel-labs/skills"
+    },
+    {
+      "name": "gh-workflows",
+      "source": "vuon9/gh-workflows"
+    },
+    {
+      "name": "grill-me",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "grill-with-docs",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "grilling",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "handoff",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "how",
+      "source": "vuon9/agent-skills"
+    },
+    {
+      "name": "hunk-review",
+      "source": "https://github.com/modem-dev/hunk/tree/main/skills/hunk-review"
+    },
+    {
+      "name": "prototype",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "receiving-code-review",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "requesting-code-review",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "shipping-darwin-apps",
+      "source": "vuon9/agent-skills"
+    },
+    {
+      "name": "subagent-driven-development",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "systematic-debugging",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "teach",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "test-driven-development",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "to-prd",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "to-spec",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "unslop",
+      "source": "cursor/plugins"
+    },
+    {
+      "name": "verification-before-completion",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "wayfinder",
+      "source": "mattpocock/skills"
+    },
+    {
+      "name": "why",
+      "source": "vuon9/agent-skills"
+    },
+    {
+      "name": "writing-plans",
+      "source": "obra/superpowers"
+    },
+    {
+      "name": "writing-skills",
+      "source": "obra/superpowers"
+    }
+  ]
+}
