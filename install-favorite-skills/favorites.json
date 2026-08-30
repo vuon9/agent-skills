@@ -13,6 +13,10 @@
       "source": "cursor/plugins"
     },
     {
+      "name": "code-teach",
+      "source": "vuon9/agent-skills"
+    },
+    {
       "name": "cua-driver",
       "source": "https://github.com/trycua/cua/tree/main/libs/cua-driver/rust/Skills/cua-driver"
     },
@@ -86,7 +90,7 @@
     },
     {
       "name": "teach",
-      "source": "cursor/plugins"
+      "source": "mattpocock/skills"
     },
     {
       "name": "test-driven-development",

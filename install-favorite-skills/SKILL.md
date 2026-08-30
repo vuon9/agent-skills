@@ -13,6 +13,16 @@ Catalog the user's preferred skills in `favorites.json` (each entry has a `sourc
 - `scripts/manage.py` — list, add, remove, or change the source of entries.
 - `scripts/install.py` — installs or refreshes every entry. Idempotent.
 - `scripts/update.py` — runs `npx skills update -g` to refresh installed git-sourced skills.
+- `scripts/sync_cursor.py` — refreshes the vendored `code-teach` skill from cursor/plugins.
+
+## Vendored skill: code-teach
+
+`code-teach` in this collection is an alias of cursor/plugins' `teach` (the `skills` CLI cannot install a skill under a new name, so it is vendored and renamed). To refresh it from upstream:
+
+```bash
+python3 scripts/sync_cursor.py    # rewrites ../code-teach/SKILL.md
+# commit + push, then run python3 scripts/install.py (or npx skills update)
+```
 
 ## Manifest format
 

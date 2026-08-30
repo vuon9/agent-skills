@@ -17,6 +17,7 @@ and agents to install.
 
 | Skill | Description |
 |-------|-------------|
+| [code-teach](./code-teach/SKILL.md) | Vendored alias of cursor/plugins' `teach`: explain a body of work plainly so a person understands it |
 | [install-favorite-skills](./install-favorite-skills/SKILL.md) | Catalog and reinstall favorite skills from upstream repos via a `favorites.json` manifest and install/update scripts |
 | [shipping-darwin-apps](./shipping-darwin-apps/SKILL.md) | Build and ship iOS/macOS apps (native, Wails, Tauri, Electron, Go/Rust): readiness, build, signing, notarization, TestFlight, App Store, DMG |
 

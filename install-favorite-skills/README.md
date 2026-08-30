@@ -5,9 +5,10 @@ repositories via a single manifest (`favorites.json`).
 
 ## Use
 
-- `scripts/manage.py` — list, add, remove, or change the source of favorites.
-- `scripts/install.py` — install or refresh every skill in `favorites.json`.
-- `scripts/update.py` — refresh installed git-sourced skills to latest.
+- `python3 scripts/manage.py` — list, add, remove, or change the source of favorites.
+- `python3 scripts/install.py` — install or refresh every skill in `favorites.json`.
+- `python3 scripts/update.py` — refresh installed git-sourced skills to latest.
+- `python3 scripts/sync_cursor.py` — refresh the vendored `code-teach` skill from cursor/plugins.
 
 ## Why
 
@@ -20,5 +21,7 @@ stays updateable with `npx skills update`.
 - `python3 scripts/manage.py add <name> --source <repo>` adds a favorite (or
   changes its source). `python3 scripts/manage.py remove <name>` removes it.
 - After any change, run `python3 scripts/install.py` to apply it locally.
+- `code-teach` is a vendored alias of cursor/plugins' `teach`; refresh it with
+  `python3 scripts/sync_cursor.py` before committing.
 - Some installed skills are local-only and are listed with `"source": "local"`.
   They are skipped by the installer and must be kept manually.
