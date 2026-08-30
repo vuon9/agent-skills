@@ -1,12 +1,13 @@
-# Investigation
+### Investigation
 
-For understanding a thing and proposing a fix. Read-only until you propose.
+**You own the answer. Plan, route, write.**
 
-1. Understand the context.
-2. Find clues.
-3. Think bigger. Form the picture.
-4. Confirm ambiguities.
-5. Check confidence. Loop until the confidence is enough.
-6. Propose the fix, or a cited answer.
+Use for understanding a thing: "how does X work", "why was Y built this way", "are we sure about Z". Read-only until you propose.
 
-Use the research role for heavy reading and to form the picture. Return a cited answer, name the ambiguities still open, and state the confidence read.
+- **Understand the context.** Read what matters. Find the clues.
+- **Think bigger.** Form the picture beyond the first answer.
+- **Confirm ambiguities.** Name what is still unclear.
+- **Check confidence.** Loop until confidence is enough. Don't propose on shaky ground.
+- **Propose the fix, or a cited answer.** Every claim traces to a source you actually read.
+
+Use the `research` role for heavy reading. The main thread keeps the picture.
