@@ -1,18 +1,6 @@
----
-name: ios-testflight-release
-description: Use when setting up, migrating, or running iOS TestFlight uploads with GitHub Actions, App Store Connect API keys, Xcode archives, reusable workflows, or build-number release checks.
----
+# Ship: App Store / TestFlight (iOS)
 
-# iOS TestFlight Release
-
-Use this skill for agent-assisted TestFlight releases. The goal is a repeatable upload with a small app-repo wrapper, private credentials, and evidence before any success claim.
-
-## Guardrails
-
-- Ask before public App Store submission or external release. Internal TestFlight upload can proceed only when the user has authorized release automation for the app.
-- Never print or commit App Store Connect private keys, `.p8` files, certificates, provisioning profiles, `.xcarchive`, `.ipa`, or exported app artifacts.
-- Do not overwrite unrelated workflow, signing, version, or project changes. Check git status first.
-- Use generic examples in public docs. Do not mention private apps, local usernames, local paths, or real credential IDs.
+For iOS apps distributed via the App Store or internal TestFlight, using GitHub Actions and App Store Connect API keys. The goal is a repeatable upload with a small repo wrapper, private credentials, and evidence before any success claim.
 
 ## Preflight
 
@@ -50,13 +38,9 @@ printf "%s" "$APP_STORE_CONNECT_API_KEY_ID" | gh secret set APP_STORE_CONNECT_AP
 printf "%s" "$APP_STORE_CONNECT_API_ISSUER_ID" | gh secret set APP_STORE_CONNECT_API_ISSUER_ID --repo owner/app
 ```
 
-## Workflow Wrapper
+## Workflow wrapper
 
-Prefer a thin wrapper that calls a reusable workflow. The public
-`vuon9/gh-workflows` repository can be reused directly for iOS TestFlight
-uploads, or forked if the project needs its own workflow contract.
-
-Pin the workflow to the exact tested reusable workflow version:
+Prefer a thin wrapper that calls a reusable workflow. The public `vuon9/gh-workflows` repository can be reused directly for iOS TestFlight uploads, or forked if the project needs its own contract. Pin to the exact tested reusable workflow version:
 
 ```yaml
 uses: vuon9/gh-workflows/.github/workflows/ios-testflight.yml@v0.1.8
@@ -96,7 +80,7 @@ jobs:
 
 Use a runner with the SDK currently required by App Store Connect.
 
-## Release Flow
+## Release flow
 
 1. Create or update the wrapper.
 2. Bump `CURRENT_PROJECT_VERSION` above the latest uploaded build.
@@ -115,7 +99,7 @@ gh workflow run testflight.yml --repo owner/app --ref main -f dry-run=false -f s
 gh run watch RUN_ID --repo owner/app --exit-status
 ```
 
-## Completion Evidence
+## Completion evidence
 
 Report only after verification. Include:
 
@@ -131,5 +115,7 @@ Report only after verification. Include:
 - Duplicate build number: bump `CURRENT_PROJECT_VERSION`.
 - SDK version rejection: switch to a newer macOS/Xcode runner.
 - Missing API credentials: set the three App Store Connect secrets.
-- Missing signing identity preflight: either install distribution identity or use an automatic-signing workflow that supports skipping local cert preflight.
+- Missing signing identity preflight: either install a distribution identity or use an automatic-signing workflow that supports skipping local cert preflight.
 - Reusable workflow checkout failure: ensure the workflow checks out tools using the called workflow repository and SHA, not the caller repository SHA.
+
+Workflow `workflow_call` design details live in the `github-reusable-workflows` skill.

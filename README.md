@@ -17,10 +17,8 @@ and agents to install.
 
 | Skill | Description |
 |-------|-------------|
-| [apple-platform-readiness](./apple-platform-readiness/SKILL.md) | Apple platform environment, Xcode project, signing, simulator, archive, and App Store Connect readiness checks |
 | [github-reusable-workflows](./github-reusable-workflows/SKILL.md) | GitHub Actions reusable workflow contracts, thin wrappers, secrets, local preflight, and versioning guardrails |
-| [ios-testflight-release](./ios-testflight-release/SKILL.md) | iOS TestFlight release setup and upload guardrails using GitHub Actions and App Store Connect |
-| [macos-release](./macos-release/SKILL.md) | macOS Developer ID signing, notarization, DMG Gatekeeper checks, and GitHub Actions release artifacts |
+| [shipping-darwin-apps](./shipping-darwin-apps/SKILL.md) | Build and ship iOS/macOS apps (native, Wails, Tauri, Electron, Go/Rust): readiness, build, signing, notarization, TestFlight, App Store, DMG |
 
 Each skill folder includes a `README.md` with human-facing use cases. `SKILL.md`
 stays focused on instructions that agents should load at runtime.

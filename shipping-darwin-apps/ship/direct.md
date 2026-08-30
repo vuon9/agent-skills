@@ -1,20 +1,6 @@
----
-name: macos-release
-description: Use when signing, notarizing, packaging, or releasing macOS apps with Developer ID and GitHub Actions.
----
+# Ship: Direct macOS (Developer ID, notarize, DMG)
 
-# macOS Release
-
-Use this for macOS desktop apps distributed outside the Mac App Store, especially when CI builds a `.app`, packages a `.dmg`, signs with Developer ID, notarizes with Apple, and verifies Gatekeeper acceptance.
-
-For general Xcode, Apple account, or App Store Connect setup, use `apple-platform-readiness`. For reusable `workflow_call` design, use `github-reusable-workflows`.
-
-## Guardrails
-
-- Never print certificate passwords, app-specific passwords, API keys, base64 certificate payloads, private keys, temporary keychain passwords, or notarization credentials.
-- Do not commit `.p12` files, certificates, private keys, provisioning profiles, exported app bundles, DMGs, or notarization logs containing sensitive paths.
-- Ask before changing Apple Developer account settings, revoking certificates, rotating secrets, publishing releases, or deleting release assets.
-- If the matching private key is missing, stop. A downloaded Developer ID certificate alone cannot produce a usable signing identity.
+For macOS desktop apps distributed outside the Mac App Store, especially when a CI builds a `.app`, packages a `.dmg`, signs with Developer ID, notarizes with Apple, and verifies Gatekeeper acceptance.
 
 ## Inputs
 
@@ -22,12 +8,12 @@ Collect these without exposing secrets:
 
 - Apple Developer Team ID.
 - Developer ID Application identity or exported `.p12` with matching private key.
-- Notarization auth: App Store Connect API key or Apple ID app-specific password.
+- Notarization auth: App Store Connect API key, or Apple ID app-specific password.
 - Bundle identifier, app display name, and hardened runtime or entitlement needs.
 - Artifact target: `.app`, `.zip`, `.dmg`, or a combination.
 - Release mode: branch artifact, draft release, tag release, or manual upload.
 
-## Certificate Prep
+## Certificate prep
 
 Inspect local signing identities:
 
@@ -41,7 +27,7 @@ Confirm the expected identity is `Developer ID Application: ...` and has a match
 base64 -i DeveloperIDApplication.p12 | pbcopy
 ```
 
-Use a strong random export password and store it separately from the encoded certificate.
+Use a strong random export password and store it separately from the encoded certificate. **If the matching private key is missing, stop.** A downloaded Developer ID certificate alone cannot produce a usable signing identity.
 
 ## GitHub Secrets
 
@@ -56,7 +42,7 @@ Use consistent secret names in app repositories and reusable workflows:
 
 Prefer App Store Connect API keys for automation when the workflow supports them.
 
-## CI Keychain Pattern
+## CI keychain pattern
 
 Create a temporary keychain, import the `.p12`, unlock it, restrict key access, and clean it up at the end of the job.
 
@@ -74,7 +60,7 @@ security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN
 security find-identity -v -p codesigning "$KEYCHAIN_PATH"
 ```
 
-## Signing Checks
+## Signing checks
 
 After building the app bundle:
 
@@ -106,7 +92,7 @@ xcrun stapler validate path/to/App.dmg
 
 For API key auth, use the repository's supported `notarytool` API key flags or a stored notarytool profile.
 
-## Gatekeeper Verification
+## Gatekeeper verification
 
 Assess the app bundle:
 
@@ -122,16 +108,16 @@ spctl --assess --type open --context context:primary-signature --verbose=4 path/
 
 When practical, test the user path: mount the DMG, copy the app to `/Applications`, and assess or launch the copied app on a clean macOS environment.
 
-## GitHub Actions Notes
+## GitHub Actions notes
 
 - Prefer the shared workflow in `vuon9/gh-workflows`: `.github/workflows/macos-release.yml`.
-- Keep app-specific build systems such as Wails, Xcode, Electron, or custom scripts in the caller repository. The reusable workflow should consume an uploaded `.app` archive, then handle Developer ID signing, notarization, DMG packaging, and release artifacts.
+- Keep app-specific build systems (Wails, Xcode, Electron, or custom scripts) in the caller repository. The reusable workflow should consume an uploaded `.app` archive, then handle Developer ID signing, notarization, DMG packaging, and release artifacts.
 - Pin third-party actions and tools to stable versions.
 - Separate branch artifact runs from tag release runs. A branch run can prove sign/notarize is green while release asset upload is skipped because there is no tag.
 - Upload signed and notarized artifacts on manual branch runs so they can be inspected before tagging.
 - Keep reusable workflow inputs small: app name, team id, app artifact name, app path, DMG name, artifact name, runner, and release mode.
 
-## Reusable Workflow
+## Reusable workflow
 
 Use `vuon9/gh-workflows/.github/workflows/macos-release.yml` when the caller workflow can upload a `.tar.gz` archive containing the built `.app` bundle.
 
@@ -200,7 +186,7 @@ Before recommending it, verify the workflow contract still matches the app:
 - DMG `spctl` mismatch: verify both the `.app` and DMG with the correct assessment type and context.
 - Release upload skipped: check whether the workflow is running on a tag and whether publishing is gated by `github.ref_type == 'tag'`.
 
-## Completion Checklist
+## Completion checklist
 
 Before reporting the release pipeline ready:
 
@@ -210,3 +196,5 @@ Before reporting the release pipeline ready:
 4. DMG Gatekeeper assessment used `context:primary-signature` when applicable.
 5. The artifact exists, with branch artifact versus tag release asset clearly stated.
 6. The report includes the workflow run URL and artifact name without revealing secrets.
+
+Reusable `workflow_call` design details live in the `github-reusable-workflows` skill.
