@@ -15,7 +15,7 @@ on:
 # Only the newest run per PR executes; older in-flight runs are cancelled
 # instead of stacking up notifications.
 concurrency:
-  group: vstack-synced-review-${{ github.event.pull_request.number || github.ref }}
+  group: vstack-review-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
