@@ -1,4 +1,4 @@
-# vm
+# vstack
 
 A manual development-workflow mode that encodes Vuong's preferred way of
 building software. Model-agnostic and stack-agnostic.
@@ -8,8 +8,8 @@ building software. Model-agnostic and stack-agnostic.
 Say what you want in plain words. Prompts come first; the scripts below are
 only the fallback.
 
-- "Work in vm mode" -> activates `/vm`. vm checks its required skills; if
-  any is missing, it runs `install-vm-skills --required`.
+- "Work in vstack mode" -> activates `/vstack`. vstack checks its required skills; if
+  any is missing, it runs `setup-vstack --required`.
 - "How does the auth flow work?" -> investigation playbook with the `research`
   role. Returns a cited answer, not a summary.
 - "Why was this table added?" -> investigation. Ends in a cited answer or a
@@ -21,10 +21,10 @@ only the fallback.
 - "Handle this small thing separately" -> the `general` role with a clear,
   self-contained brief.
 
-## What happens on /vm
+## What happens on /vstack
 
-1. vm checks its required skills. Missing one? It runs
-   `install-vm-skills --required` first.
+1. vstack checks its required skills. Missing one? It runs
+   `setup-vstack --required` first.
 2. It reads the Principles in full, then the matched playbook.
 3. It copies the playbook steps into the todolist verbatim. A skipped step
    stays with `skip: <reason>`.
@@ -39,7 +39,7 @@ Full details live in `references/roles.md`.
 
 ## Why the rules live in two layers
 
-vm follows poteto-mode's shape: triggers and principles.
+vstack follows poteto-mode's shape: triggers and principles.
 
 - **Triggers** (Non-negotiables) are moment-of-recognition routing. The agent
   scans them while working; the moment a situation appears, the matching line
@@ -57,9 +57,9 @@ up front and cited). If you change such a rule, edit both places.
 
 Only needed when you want the underlying commands directly.
 
-- `python3 install-vm-skills/scripts/install.py --all` installs everything.
-- `python3 install-vm-skills/scripts/install.py --required` installs just what
-  vm needs.
+- `python3 skills/setup-vstack/scripts/install.py --all` installs everything.
+- `python3 skills/setup-vstack/scripts/install.py --required` installs just what
+  vstack needs.
 - `npx skills update -g` refreshes installed skills to latest.
 
 ## Making it yours

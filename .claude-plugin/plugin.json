@@ -1,16 +1,16 @@
 {
-  "name": "vuong-skills",
+  "name": "vstack-skills",
   "version": "1.0.0",
-  "description": "Vuong's collection of agent skills.",
+  "description": "VStack's collection of agent skills.",
   "license": "MIT",
   "skills": [
-    "./bro",
-    "./code-teach",
-    "./how",
-    "./install-vm-skills",
-    "./shipping-darwin-apps",
-    "./unslop",
-    "./vm",
-    "./why"
+    "./skills/bro",
+    "./skills/code-teach",
+    "./skills/how",
+    "./skills/setup-vstack",
+    "./skills/shipping-darwin-apps",
+    "./skills/unslop",
+    "./skills/vstack",
+    "./skills/why"
   ]
 }

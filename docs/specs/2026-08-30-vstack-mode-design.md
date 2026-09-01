@@ -1,11 +1,11 @@
-# Design spec: `vm` mode
+# Design spec: `vstack` mode
 
 Date: 2026-08-30
 Status: Approved for review
 
 ## 1. Purpose
 
-`vm` is a manual, model-agnostic "mode" skill that encodes Vuong's preferred way
+`vstack` is a manual, model-agnostic "mode" skill that encodes Vuong's preferred way
 of working across any kind of software. It is not tied to a specific agent,
 editor, or set of model names. The goal is a small forkable surface: another
 person can copy the repo, change a handful of clearly-marked spots, and have a
@@ -14,13 +14,13 @@ working version of their own.
 ## 2. Core decisions
 
 - **Trigger:** manual. Use `disable-model-invocation: true` so the skill stays
-  out of the model's auto-invocation; the user calls it via `/skill:vm`. No
+  out of the model's auto-invocation; the user calls it via `/skill:vstack`. No
   always-on mode, no auto-reminder.
 - **Model-agnostic:** the skill never names a model. Roles describe a *job*;
   the model is whatever the harness (or the user) provides. Let each model do
   its best for its conditions.
 - **No config file.** Dropped in favor of a short "Adapt me" section inside
-  `SKILL.md`. Fewer moving parts beats a `vm.yaml`.
+  `SKILL.md`. Fewer moving parts beats a `vstack.yaml`.
 - **Modular files.** `SKILL.md` is a concise overview; deeper content lives in
   `playbooks/` (workflows) and `references/` (role detail). Thin index, fat
   leaves; reference leaves by name, never inline them.
@@ -31,7 +31,7 @@ working version of their own.
 ## 3. File layout
 
 ```
-vm/
+vstack/
 ├── SKILL.md                      # trigger, principles, work model, routing, roles summary, "Adapt me"
 ├── playbooks/
 │   ├── implementation.md         # clear reqs → brainstorm; foggy/big → wayfinder; else clarify
@@ -44,9 +44,9 @@ vm/
 
 The identity file. Its sections, in order:
 
-1. **Frontmatter** with `name: vm`, a description that hooks `/vm`, and
+1. **Frontmatter** with `name: vstack`, a description that hooks `/vstack`, and
    `disable-model-invocation: true` (manual trigger only).
-2. **What vm is**, one or two sentences.
+2. **What vstack is**, one or two sentences.
 3. **Principles**, the non-negotiables (below).
 4. **Work model**, the two tracks and their entry points, pointing at the
    playbooks.
@@ -78,7 +78,7 @@ The identity file. Its sections, in order:
 - **Principles must trace to a decision.** Name a principle only when it
   changed a concrete choice. A citation with no decision behind it means the
   principle was skipped.
-- **Read before you reason.** When `/vm` fires, read the Principles in full and
+- **Read before you reason.** When `/vstack` fires, read the Principles in full and
   the matched playbook before reasoning about the task. No silent assumptions.
 - **The ask is the slow path.** Before asking the user a "which approach" or
   "what should this do" fork, check if the answer is observable. Sketch or run
@@ -91,7 +91,7 @@ skill, and ask the harness user before doing so.
 ### Work model + routing
 
 | Situation | Route |
-|-----------|-------|
+| ----------- | ------- |
 | Implementation, requirements clear | `playbooks/implementation.md` and brainstorming |
 | Implementation, foggy or too big for one session | `playbooks/implementation.md` and wayfinder |
 | Investigation / understand a thing | `playbooks/investigation.md` and the research role |
@@ -149,7 +149,7 @@ No config, no plugins, no model names to change.
 ## 9. Non-goals
 
 - No model names or per-role model config.
-- No `vm.yaml` config file.
+- No `vstack.yaml` config file.
 - No auto-reminder / always-on mode.
 - No Cursor-specific machinery (`subagent_type`, MCP, `cursor-team-kit`).
 - No huge principle taxonomy or a `scripts/` directory (add later only if a

@@ -1,4 +1,4 @@
-# Agent Skills
+# VStack
 
 A collection of skills for AI coding agents.
 
@@ -7,35 +7,35 @@ A collection of skills for AI coding agents.
 Install this repository with the open agent skills CLI:
 
 ```bash
-npx skills add -g vuon9/agent-skills
+npx skills add -g vuon9/vstack
 ```
 
 The `skills` tool opens an interactive flow where you can choose which skills
 and agents to install. The collection is managed and refreshed by
-[install-vm-skills](./install-vm-skills/SKILL.md) (`favorites.json` is the
+[setup-vstack](./skills/setup-vstack/SKILL.md) (`favorites.json` is the
 single source of truth for what gets installed).
 
 ## Approaches
 
 - Free to install: Using the first command you see in the **Install** part to choose skills and install whatever you wanted
-- Wanted to try `vm`: It's my preferred way to start working on things, install `vm` and read its README to having more context
+- Wanted to try `vstack`: It's my preferred way to start working on things, install `vstack` and read its README to having more context
 
 ## Skills
 
 ### Written by me
 
-- [vm](./vm/SKILL.md). vuong mode, the manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
-- [install-vm-skills](./install-vm-skills/SKILL.md). Install and refresh this collection from `favorites.json`
-- [shipping-darwin-apps](./shipping-darwin-apps/SKILL.md). Build and ship iOS/macOS apps (signing, notarization, TestFlight, DMG)
+- [vstack](./skills/vstack/SKILL.md). vstack mode, the manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
+- [setup-vstack](./skills/setup-vstack/SKILL.md). Install and refresh this collection from `favorites.json`
+- [shipping-darwin-apps](./skills/shipping-darwin-apps/SKILL.md). Build and ship iOS/macOS apps (signing, notarization, TestFlight, DMG)
 - [gh-workflows](https://github.com/vuon9/gh-workflows). Reusable GitHub Actions workflows
 
 ### Copied from cursor/plugins, adjusted for editor-agnostic use
 
-- [bro](./bro/SKILL.md). Restate the last message in plain language (as-is)
-- [code-teach](./code-teach/SKILL.md). Explain a body of work, cursor's `teach` renamed (as-is)
-- [how](./how/SKILL.md). Explain how a subsystem works (edited: Cursor-specific wording normalized)
-- [unslop](./unslop/SKILL.md). Remove AI tells from writing (as-is)
-- [why](./why/SKILL.md). Explain why a change (edited: Cursor-specific wording normalized)
+- [bro](./skills/bro/SKILL.md). Restate the last message in plain language (as-is)
+- [code-teach](./skills/code-teach/SKILL.md). Explain a body of work, cursor's `teach` renamed (as-is)
+- [how](./skills/how/SKILL.md). Explain how a subsystem works (edited: Cursor-specific wording normalized)
+- [unslop](./skills/unslop/SKILL.md). Remove AI tells from writing (as-is)
+- [why](./skills/why/SKILL.md). Explain why a change (edited: Cursor-specific wording normalized)
 
 ### From other authors, installed from their repos
 

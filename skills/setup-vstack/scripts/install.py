@@ -7,9 +7,10 @@ installed from a different source, it is removed first so the new source wins.
 Scopes:
   --mine       skills written by vuong (scope: mine)
   --external   skills from other authors (scope: external)
-  --required   the skills vm needs (required: true)
+  --required   the skills vstack needs (required: true)
   --all        everything (default)
 """
+
 import argparse
 import json
 import os
@@ -22,8 +23,11 @@ LOCK_PATH = os.path.expanduser("~/.agents/.skill-lock.json")
 
 
 def load_skills():
-    with open(MANIFEST) as fh:
-        return json.load(fh)["skills"]
+    try:
+        with open(MANIFEST) as fh:
+            return json.load(fh)["skills"]
+    except (OSError, ValueError, KeyError) as exc:
+        raise RuntimeError(f"could not load {MANIFEST}: {exc}") from exc
 
 
 def current_source(name):
@@ -49,10 +53,20 @@ def filter_skills(skills, scope):
 def parse_args():
     parser = argparse.ArgumentParser(description="Install skills from favorites.json.")
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--mine", action="store_true", help="install vuong-written skills only")
-    group.add_argument("--external", action="store_true", help="install other authors' skills only")
-    group.add_argument("--required", action="store_true", help="install only the skills vm requires")
-    group.add_argument("--all", action="store_true", help="install everything (default)")
+    group.add_argument(
+        "--mine", action="store_true", help="install vuong-written skills only"
+    )
+    group.add_argument(
+        "--external", action="store_true", help="install other authors' skills only"
+    )
+    group.add_argument(
+        "--required",
+        action="store_true",
+        help="install only the skills vstack requires",
+    )
+    group.add_argument(
+        "--all", action="store_true", help="install everything (default)"
+    )
     return parser.parse_args()
 
 
@@ -76,12 +90,16 @@ def main():
         source = entry.get("source")
 
         if source in (None, "", "local"):
-            print(f"[skip] {name}: local/manual ({entry.get('note', 'no repo source')})")
+            print(
+                f"[skip] {name}: local/manual ({entry.get('note', 'no repo source')})"
+            )
             continue
 
         existing = current_source(name)
         if existing and existing != source and existing != "local":
-            print(f"[swap] {name}: removing existing ({existing}) before installing from {source}")
+            print(
+                f"[swap] {name}: removing existing ({existing}) before installing from {source}"
+            )
             subprocess.run(
                 ["npx", "-y", "skills", "remove", name, "-g", "-y"],
                 check=False,
@@ -90,7 +108,18 @@ def main():
 
         print(f"[install] {name} <- {source}")
         res = subprocess.run(
-            ["npx", "-y", "skills", "add", "-g", source, "--skill", name, "--full-depth", "-y"],
+            [
+                "npx",
+                "-y",
+                "skills",
+                "add",
+                "-g",
+                source,
+                "--skill",
+                name,
+                "--full-depth",
+                "-y",
+            ],
             check=False,
             capture_output=True,
         )
