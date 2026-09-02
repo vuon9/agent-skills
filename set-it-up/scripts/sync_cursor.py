@@ -28,7 +28,7 @@ BASE = (
     "https://raw.githubusercontent.com/cursor/plugins/main/pstack/skills/{id}/SKILL.md"
 )
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.join(HERE, "..", "..", "..")
+REPO = os.path.join(HERE, "..", "..")
 
 
 def main():

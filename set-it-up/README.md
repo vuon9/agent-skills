@@ -1,4 +1,4 @@
-# Setup VStack
+# Set It Up
 
 Catalog and reinstall Vuong's agent skills (written + preferred from other
 authors) via a single manifest (`favorites.json`).
@@ -9,10 +9,10 @@ Say what you want in plain words. Prompts come first; the scripts below are
 only the fallback.
 
 - "Install all my skills" -> `python3 scripts/install.py --all`
-- "Install what vstack needs" -> `python3 scripts/install.py --required`
+- "Install what vmode needs" -> `python3 scripts/install.py --required`
 - "Install only my own skills" -> `python3 scripts/install.py --mine`
 - "Add the skill 'foo' from 'bar/repo'" -> `python3 scripts/manage.py add foo --source bar/repo`
-- "Add 'foo' as mine and required by vstack" -> `python3 scripts/manage.py add foo --source bar/repo --scope mine --required`
+- "Add 'foo' as mine and required by vmode" -> `python3 scripts/manage.py add foo --source bar/repo --scope mine --required`
 - "Remove 'foo'" -> `python3 scripts/manage.py remove foo`
 - "Refresh everything to latest" -> `npx skills update -g`
 
@@ -31,13 +31,13 @@ Only needed when you want the underlying commands directly.
 
 Rather than relying on the installed global state, this keeps one versioned
 list of the skills you care about, each pinned to its `owner/repo` source so it
-stays updateable with `npx skills update`. The `vstack` mode checks its required
+stays updateable with `npx skills update`. The `vmode` mode checks its required
 skills and routes here when something is missing.
 
 ## Notes
 
 - `python3 scripts/manage.py add <name> --source <repo> --scope mine` adds a
-  favorite (or changes its source). `--required` marks it as needed by `vstack`.
+  favorite (or changes its source). `--required` marks it as needed by `vmode`.
 - After any change, run `python3 scripts/install.py` to apply it locally.
 - Some skills are local-only and listed with `"source": "local"`. They are
   skipped by the installer and must be kept manually.

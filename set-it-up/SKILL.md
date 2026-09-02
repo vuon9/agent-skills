@@ -1,15 +1,15 @@
 ---
-name: setup-vstack
-description: Use when restoring or updating the global skill set, installing vstack's required skills, adding, removing, or changing the source of a favorite, or checking what is installed. Installs, refreshes, and catalogs Vuong's agent skills (written + preferred from other authors) using favorites.json (a repo + skill-name manifest with scope and required flags) and wrapper scripts.
+name: set-it-up
+description: Use when restoring or updating the global skill set, installing vmode's required skills, adding, removing, or changing the source of a favorite, or checking what is installed. Installs, refreshes, and catalogs Vuong's agent skills (written + preferred from other authors) using favorites.json (a repo + skill-name manifest with scope and required flags) and wrapper scripts.
 ---
 
-# Setup VStack
+# Set It Up
 
 Catalog Vuong's skills in `favorites.json` (each entry has a `source` repo and a `name`, plus `scope` and `required`), then install or refresh them. This keeps a single, versioned list of every skill that matters instead of relying on the installed state alone.
 
 ## Files
 
-- `favorites.json`. The manifest. Entries carry `name`, `source`, `scope` (mine/external), and an optional `required` flag for vstack.
+- `favorites.json`. The manifest. Entries carry `name`, `source`, `scope` (mine/external), and an optional `required` flag for vmode.
 - `scripts/manage.py`. List, add, remove, change source, mark required.
 - `scripts/install.py`. Installs or refreshes entries, filtered by scope. Idempotent.
 - `scripts/update.py`. Runs `npx skills update -g` to refresh installed git-sourced skills.
@@ -19,7 +19,7 @@ Catalog Vuong's skills in `favorites.json` (each entry has a `source` repo and a
 
 - `mine`. Skills written by Vuong (source `vuon9/*`).
 - `external`. Preferred skills from other authors.
-- `required`. The skills the `vstack` mode needs to work (a mix of mine and external).
+- `required`. The skills the `vmode` mode needs to work (a mix of mine and external).
 
 ## Install
 
@@ -27,10 +27,10 @@ Catalog Vuong's skills in `favorites.json` (each entry has a `source` repo and a
 python3 scripts/install.py --all        # everything (default)
 python3 scripts/install.py --mine       # Vuong-written skills only
 python3 scripts/install.py --external   # other authors' skills only
-python3 scripts/install.py --required   # exactly what vstack needs
+python3 scripts/install.py --required   # exactly what vmode needs
 ```
 
-`vstack` checks its required skills on start. If any is missing, it routes here with `--required`.
+`vmode` checks its required skills on start. If any is missing, it routes here with `--required`.
 
 ## Vendored cursor skills
 
@@ -58,7 +58,7 @@ python3 scripts/sync_cursor.py    # refresh code-teach, bro, unslop
 - `name`. The skill name (must match the `name:` in its `SKILL.md`).
 - `source`. An `owner/repo` GitHub source, a full GitHub tree URL pointing at a nested skill, or `local` for a manually-managed skill that has no repo source.
 - `scope`. `mine` (Vuong-written) or `external` (other authors).
-- `required`. Optional `true` for skills the `vstack` mode depends on.
+- `required`. Optional `true` for skills the `vmode` mode depends on.
 - `note`. Optional; only used for `local` entries.
 
 ## Manage the list
@@ -78,7 +78,7 @@ python3 scripts/manage.py remove <name>
 # change only the source of an existing favorite
 python3 scripts/manage.py set-source <name> <owner/repo>
 
-# mark a favorite as required by vstack (or not)
+# mark a favorite as required by vmode (or not)
 python3 scripts/manage.py set-required <name> true
 ```
 

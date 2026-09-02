@@ -4,13 +4,13 @@
   "description": "VStack's collection of agent skills.",
   "license": "MIT",
   "skills": [
+    "./set-it-up",
     "./skills/bro",
     "./skills/code-teach",
     "./skills/how",
-    "./skills/setup-vstack",
     "./skills/shipping-darwin-apps",
     "./skills/unslop",
-    "./skills/vstack",
-    "./skills/why"
+    "./skills/why",
+    "./vmode"
   ]
 }
