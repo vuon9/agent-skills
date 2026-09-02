@@ -7,7 +7,7 @@ installed from a different source, it is removed first so the new source wins.
 Scopes:
   --mine       skills written by vuong (scope: mine)
   --external   skills from other authors (scope: external)
-  --required   the skills vstack needs (required: true)
+  --required   the skills vmode needs (required: true)
   --all        everything (default)
 """
 
@@ -62,7 +62,7 @@ def parse_args():
     group.add_argument(
         "--required",
         action="store_true",
-        help="install only the skills vstack requires",
+        help="install only the skills vmode requires",
     )
     group.add_argument(
         "--all", action="store_true", help="install everything (default)"

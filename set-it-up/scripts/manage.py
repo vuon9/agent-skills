@@ -7,7 +7,7 @@ Commands:
     [--scope mine|external] [--required]
   remove <name>                 Remove a favorite from the manifest.
   set-source <name> <repo>      Change only the source of an existing favorite.
-  set-required <name> <true|false>  Mark a favorite as required by vstack or not.
+  set-required <name> <true|false>  Mark a favorite as required by vmode or not.
 
 After any change, run scripts/install.py to apply it to the local machine.
 """

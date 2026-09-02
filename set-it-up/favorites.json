@@ -147,7 +147,7 @@
       "scope": "external"
     },
     {
-      "name": "vstack",
+      "name": "vmode",
       "source": "vuon9/vstack",
       "scope": "mine"
     },

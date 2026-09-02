@@ -12,20 +12,20 @@ npx skills add -g vuon9/vstack
 
 The `skills` tool opens an interactive flow where you can choose which skills
 and agents to install. The collection is managed and refreshed by
-[setup-vstack](./skills/setup-vstack/SKILL.md) (`favorites.json` is the
+[set-it-up](./set-it-up/SKILL.md) (`favorites.json` is the
 single source of truth for what gets installed).
 
 ## Approaches
 
 - Free to install: Using the first command you see in the **Install** part to choose skills and install whatever you wanted
-- Wanted to try `vstack`: It's my preferred way to start working on things, install `vstack` and read its README to having more context
+- Wanted to try `vmode`: It's my preferred way to start working on things, install `vmode` and read its README to having more context
 
 ## Skills
 
 ### Written by me
 
-- [vstack](./skills/vstack/SKILL.md). vstack mode, the manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
-- [setup-vstack](./skills/setup-vstack/SKILL.md). Install and refresh this collection from `favorites.json`
+- [vmode](./vmode/SKILL.md). The manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
+- [set-it-up](./set-it-up/SKILL.md). Install and refresh this collection from `favorites.json`
 - [shipping-darwin-apps](./skills/shipping-darwin-apps/SKILL.md). Build and ship iOS/macOS apps (signing, notarization, TestFlight, DMG)
 - [gh-workflows](https://github.com/vuon9/gh-workflows). Reusable GitHub Actions workflows
 
