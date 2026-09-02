@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: Use when writing or editing any text; cut AI tells and add human voice. Must always apply.
 ---
 
 # Unslop

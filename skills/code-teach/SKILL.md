@@ -1,6 +1,6 @@
 ---
 name: code-teach
-description: "Explain a body of work plainly so a person actually understands it. Runs the `how` and `why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'."
+description: "Use when someone asks to be taught a body of work ('teach me this', 'help me really understand X', 'explain this change or subsystem to me'). Explain it plainly so they actually understand: run the `how` and `why` skills and weave what they find into one clear explanation."
 disable-model-invocation: true
 ---
 
