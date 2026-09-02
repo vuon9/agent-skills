@@ -20,3 +20,6 @@ Thumbs.db
 # Superpowers local planning docs
 docs/superpowers/
 
+# vmode evaluation docs (local only, not committed)
+docs/vmode-eval-*.md
+
