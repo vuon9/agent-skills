@@ -11,6 +11,7 @@ only the fallback.
 - "Install all my skills" -> `python3 scripts/install.py --all`
 - "Install what vmode needs" -> `python3 scripts/install.py --required`
 - "Install only my own skills" -> `python3 scripts/install.py --mine`
+- "Check the collection is consistent" -> `python3 scripts/manage.py verify`
 - "Add the skill 'foo' from 'bar/repo'" -> `python3 scripts/manage.py add foo --source bar/repo`
 - "Add 'foo' as mine and required by vmode" -> `python3 scripts/manage.py add foo --source bar/repo --scope mine --required`
 - "Remove 'foo'" -> `python3 scripts/manage.py remove foo`
@@ -20,9 +21,14 @@ only the fallback.
 
 Only needed when you want the underlying commands directly.
 
-- `python3 scripts/manage.py`. List, add, remove, change source, mark required.
+- `python3 scripts/manage.py`. List, add, remove, change source, mark required,
+  verify.
+- `python3 scripts/manage.py verify`. Check `favorites.json`, the vmode
+  required list, and repo-local skills agree. Exits 0 when clean.
 - `python3 scripts/install.py`. Install/refresh. Filters: `--mine`, `--external`,
   `--required`, `--all` (default).
+- `python3 scripts/install.py --dry-run`. Print the install/remove actions
+  without running them.
 - `python3 scripts/update.py`. Refresh installed git-sourced skills to latest.
 - `python3 scripts/sync_cursor.py`. Refresh the vendored cursor skills
   (`code-teach`, `bro`, `unslop`).

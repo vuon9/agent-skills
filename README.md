@@ -15,6 +15,20 @@ and agents to install. The collection is managed and refreshed by
 [set-it-up](./set-it-up/SKILL.md) (`favorites.json` is the
 single source of truth for what gets installed).
 
+## Verify
+
+A deterministic check validates the collection: every `favorites.json` entry,
+the `## Required skills` list in [vmode](./vmode/SKILL.md), and the
+repo-local skills agree (name, source, scope, description, README).
+
+```bash
+python3 set-it-up/scripts/manage.py verify    # exit 0 when clean
+python3 set-it-up/scripts/install.py --dry-run # preview install actions
+```
+
+CI runs the same verification plus the unit test suite on every push and PR
+(`.github/workflows/validate.yml`).
+
 ## Approaches
 
 - Free to install: Using the first command you see in the **Install** part to choose skills and install whatever you wanted
