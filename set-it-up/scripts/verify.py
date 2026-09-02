@@ -12,7 +12,9 @@ def parse_vmode_required(vmode_skill_path: Path) -> set[str]:
         raise FileNotFoundError(f"Missing {vmode_skill_path}")
 
     text = vmode_skill_path.read_text(encoding="utf-8")
-    section_match = re.search(r"## Required skills\s*\n(.*?)(?:\n## |\Z)", text, re.DOTALL)
+    section_match = re.search(
+        r"## Required skills\s*\n(.*?)(?:\n## |\Z)", text, re.DOTALL
+    )
     if not section_match:
         return set()
 
@@ -74,17 +76,27 @@ def verify_manifest(repo_root: Path) -> list[str]:
 
         scope = entry.get("scope")
         if scope not in ("mine", "external"):
-            errors.append(f"Skill '{name}' has invalid scope '{scope}' (must be 'mine' or 'external')")
+            errors.append(
+                f"Skill '{name}' has invalid scope '{scope}' (must be 'mine' or 'external')"
+            )
 
-        if scope == "mine" and source and not (source.startswith("vuon9/") or source == "local"):
-            errors.append(f"Skill '{name}' marked 'mine' must source from 'vuon9/*' or 'local', got '{source}'")
+        if (
+            scope == "mine"
+            and source
+            and not (source.startswith("vuon9/") or source == "local")
+        ):
+            errors.append(
+                f"Skill '{name}' marked 'mine' must source from 'vuon9/*' or 'local', got '{source}'"
+            )
 
         if entry.get("required"):
             manifest_required.add(name)
 
         if source == "vuon9/vstack":
             local_skill_dir = (
-                repo_root / name if (repo_root / name).is_dir() else repo_root / "skills" / name
+                repo_root / name
+                if (repo_root / name).is_dir()
+                else repo_root / "skills" / name
             )
             skill_md = local_skill_dir / "SKILL.md"
             readme_md = local_skill_dir / "README.md"
@@ -95,10 +107,14 @@ def verify_manifest(repo_root: Path) -> list[str]:
                 meta = parse_frontmatter(skill_md)
                 front_name = meta.get("name")
                 if front_name and front_name != name:
-                    errors.append(f"Frontmatter name '{front_name}' in {skill_md} != manifest name '{name}'")
+                    errors.append(
+                        f"Frontmatter name '{front_name}' in {skill_md} != manifest name '{name}'"
+                    )
                 desc = meta.get("description", "")
                 if desc and not desc.startswith("Use when"):
-                    errors.append(f"Description for '{name}' in {skill_md} should start with 'Use when'")
+                    errors.append(
+                        f"Description for '{name}' in {skill_md} should start with 'Use when'"
+                    )
 
             if not readme_md.is_file():
                 errors.append(f"Skill '{name}' is missing {readme_md}")

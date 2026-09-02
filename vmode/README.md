@@ -25,21 +25,29 @@ only the fallback.
 
 1. vmode checks its required skills. Missing one? It runs
    `set-it-up --required` first.
-2. It reads the Principles in full, then the matched playbook.
+2. It reads the Principles in full, then the matched playbook (`feature`, `bug-fix`, `prototype`, `investigation`, or `babysit`).
 3. It copies the playbook steps into the todolist verbatim. A skipped step
    stays with `skip: <reason>`.
 
 ## Roles
 
-- **watchdog** drives a PR to green, then stops and reports.
+- **watchdog** drives a PR to green, triages review/bot comments, then stops and reports.
 - **general** handles isolated work with a clear brief.
 - **research** builds the picture and returns a cited report.
 
 Full details live in `references/roles.md`.
 
+## Subagent Dispatch & Harness Compatibility
+
+vmode delegates subagent tasks through prompt instructions and role briefs rather than hardcoded proprietary model IDs:
+
+- **OpenCode**: Native built-in `subagent` tool (`general` and `explore` built-in, or custom profiles in `.opencode/agents/`).
+- **Pi (`@earendil-works/pi-coding-agent`)**: Invokes subagents via Pi's `subagent` extension or prompt instructions.
+- Subagents receive capability-tiered briefs (`mechanical`, `reasoning`, `watchdog`) so the user's configured model or parent harness executes them cleanly.
+
 ## Why the rules live in two layers
 
-vmode follows poteto-mode's shape: triggers and principles.
+vmode learns from `poteto-mode` (from `cursor/plugins/pstack`): triggers and principles. Instead of coupling to specific Cursor features or fixed commercial models, vmode distills the core mechanics:
 
 - **Triggers** (Non-negotiables) are moment-of-recognition routing. The agent
   scans them while working; the moment a situation appears, the matching line
@@ -64,9 +72,9 @@ Only needed when you want the underlying commands directly.
 
 ## Making it yours
 
-Fork the repo and edit only the two marked spots.
+Fork the repo and edit only the marked spots:
 
-- The behavior-test step in `playbooks/implementation.md`.
+- The behavior-test step in `playbooks/feature.md`.
 - The PR template reference in `references/roles.md`.
 
 Everything else is style, not stack.

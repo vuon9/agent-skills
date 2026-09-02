@@ -1,6 +1,8 @@
 # VStack
 
-A collection of skills for AI coding agents.
+A modular collection of skills and workflows for AI coding agents, designed to be harness- and model-agnostic.
+
+The workflow system in `vmode` is inspired by the trigger-and-principle architecture of `poteto-mode` (from `cursor/plugins/pstack`), refined into an editor-agnostic, lightweight form without vendor lock-in, proprietary model couplings, or complex external dependencies.
 
 ## Install
 
