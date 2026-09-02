@@ -12,13 +12,15 @@ When delegating tasks:
 
 1. **Check available subagent tools in the runtime:**
    - **OpenCode**: Use the built-in `subagent` tool.
+     - Never pass unregistered custom agent names (e.g. `agent: "watchdog"` will fail).
      - For `research`: Use `agent: "explore"` (read-only search and file reading) or `agent: "general"`.
      - For `general`: Use `agent: "general"` (read/write/shell tools enabled).
      - For `watchdog`: Use `agent: "general"` with background execution enabled (`background: true`).
    - **Pi (`@earendil-works/pi-coding-agent`)**:
-     - If the `subagent` extension/tool is registered: Call `subagent` with `{ agent, task, cwd }` or `{ tasks: [...] }`.
-     - Otherwise, dispatch via prompt instructions or background CLI process (`pi -p --no-session "..."`).
-   - **Other harnesses / standalone**: If no subagent tool exists, execute the task directly within the current session, preserving the role's boundary and verification standards.
+     - Pi does not include a `subagent` tool by default.
+     - If the `subagent` extension/tool is installed: Call `subagent` with `{ agent, task, cwd }` or `{ tasks: [...] }`.
+     - Otherwise, dispatch via Pi's CLI in bash: `pi -p --no-session "<brief>"` (or `--model <model>` to match the parent session).
+   - **Other harnesses / standalone**: If no subagent tool or CLI spawn exists, execute the task directly within the current session, preserving the role's boundary and verification standards.
 
 2. **Self-contained prompt brief:**
    Always provide a complete, self-contained prompt to the subagent. Subagents launch in a fresh context window without prior chat history. Include:
