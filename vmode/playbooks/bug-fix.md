@@ -19,4 +19,4 @@ Use when resolving a defect or unintended behavior.
    Apply the fix.
    Verify the failing reproduction now passes cleanly on the exact same surface.
 5. **Local review.**
-   Review the diff via `hunk-review`. Confirm no leftover temporary debug instrumentation remains.
+   Review the diff via `hunk-review`. Confirm no leftover temporary debug instrumentation remains. If no live Hunk review session is active, run `requesting-code-review` on the local diff or dispatch a fresh reviewer subagent with the diff to audit the changes.

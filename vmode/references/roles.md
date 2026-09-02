@@ -63,7 +63,7 @@ When delegating tasks:
   Target files: <comma_separated_paths>
   Invariants & Data Shapes: <key_boundaries>
   Verification: Run `<test_or_verification_command>` and ensure it passes.
-  Return: Provide only the summary of changes and verification evidence.
+  Return: Provide a summary of changes along with raw execution evidence: exact test/command output, passing assertion counts, and `git diff --stat`. Unsubstantiated claims will be rejected.
   ```
 
 ### research
@@ -78,5 +78,5 @@ When delegating tasks:
   Instructions:
   1. Trace code paths, dependencies, and execution flows using read/grep/glob.
   2. Identify ambiguities, design rationale, or regressions.
-  3. Report findings with exact file and line citations. Link only artifacts you actually read.
+  3. Report findings with exact file and line citations. Before citing line spans, verify each symbol or line range using `grep -n` or read tool output. Return the raw grep or line output snippet as verification evidence.
   ```

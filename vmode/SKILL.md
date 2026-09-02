@@ -10,7 +10,7 @@ A manual mode for building software the way Vuong would. It wires existing skill
 
 ## Non-negotiables
 
-Start every task by checking the required skills are available, then reading the Principles below in full, and the matched playbook, before doing anything else. Then copy the matched playbook's steps into your todolist verbatim. A step you skip stays in the list with `skip: <reason>`. In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means the principle was skipped.
+Start every task by checking the required skills are available (confirming presence in the active skills manifest or checking that `<skill>/SKILL.md` exists and is non-empty; if any is missing, run `set-it-up --required`), then reading the Principles below in full, and the matched playbook, before doing anything else. Then copy the matched playbook's steps into your todolist verbatim. A step you skip stays in the list with `skip: <reason>`. In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means the principle was skipped.
 
 Remaining triggers.
 
@@ -32,7 +32,7 @@ Remaining triggers.
 
 ## Required skills
 
-vmode depends on these. Check they are available when vmode starts; if any is missing, run `set-it-up --required`.
+vmode depends on these. Verify their availability when vmode starts by checking their manifest presence or `<skill>/SKILL.md` file existence. If any is missing or unreadable, run `set-it-up --required`.
 
 - `brainstorming`
 - `wayfinder`
@@ -52,7 +52,7 @@ Each principle names when it applies. Read it before acting on that situation.
 - **TDD for scope.** When the change is scoped or non-behavioral. Write the unit test first via `test-driven-development`.
 - **Reproduce before fixing.** When addressing any defect. Create an observable repro before writing code.
 - **Minimal, and long-term.** When sizing a change, or tempted to stack a "quick fix". Smallest change that truly solves it, and prefer a real long-term fix.
-- **Verify, don't assume.** When about to declare done. Prove it against the real artifact, not "it compiles".
+- **Verify, don't assume.** When about to declare done. Prove it against the real artifact, not "it compiles". Require raw evidence, not claims.
 - **The ask is the slow path.** Before asking the user a fork. Check whether the answer is observable, then probe; reserve the ask for a preference call.
 - **Confirm before posting.** When a review or comment goes to GitHub. Check the report is sound first.
 - **Triage before churning.** When handling review or bot comments. Classify into fix, dismiss with proof, or ask.
