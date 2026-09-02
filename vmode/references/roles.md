@@ -1,24 +1,80 @@
-# Roles
+# Roles & Subagents
 
-Three model-agnostic capabilities. Reusable, not one-role-one-task. Each runs on whatever model the harness gives you.
+Three model-agnostic capabilities reusable across harnesses and model providers. Each capability defines its operational role, capability profile, and structured prompt brief so any harness can dispatch it cleanly.
 
-**You own every subagent's work.** Review the diff. Write your own summary. Don't pass through what the subagent said. Fire a fresh subagent with consolidated scope rather than trusting a "done" summary.
+You own every subagent's work: review the diff, write your own summary, and never pass through unverified assertions.
 
-## watchdog
+---
 
-**When.** A PR must reach green, or the user asks to babysit a PR.
-**Ask.** Drive it to green. Poll status, resolve conflicts, address review comments, then stop and report. Never loop past green.
-The PR body follows the repo or org PR template.
-<!-- EDIT: pr-template --> Replace this with the repo or org PR template reference.
+## Harness Dispatch Protocol
 
-## general
+When delegating tasks:
 
-**When.** Isolated or unrelated work that can leave the main thread.
-**Ask.** Give a clear, self-contained brief. Let it do its best.
-**Returns.** The result plus a short summary. The main thread keeps the picture.
+1. **Check available subagent tools in the runtime:**
+   - **OpenCode**: Use the built-in `subagent` tool.
+     - For `research`: Use `agent: "explore"` (read-only search and file reading) or `agent: "general"`.
+     - For `general`: Use `agent: "general"` (read/write/shell tools enabled).
+     - For `watchdog`: Use `agent: "general"` with background execution enabled (`background: true`).
+   - **Pi (`@earendil-works/pi-coding-agent`)**:
+     - If the `subagent` extension/tool is registered: Call `subagent` with `{ agent, task, cwd }` or `{ tasks: [...] }`.
+     - Otherwise, dispatch via prompt instructions or background CLI process (`pi -p --no-session "..."`).
+   - **Other harnesses / standalone**: If no subagent tool exists, execute the task directly within the current session, preserving the role's boundary and verification standards.
 
-## research
+2. **Self-contained prompt brief:**
+   Always provide a complete, self-contained prompt to the subagent. Subagents launch in a fresh context window without prior chat history. Include:
+   - Specific role and task objective.
+   - Exact file paths and constraints.
+   - Acceptance criteria or verification command.
 
-**When.** An investigation or understanding question.
-**Ask.** Gather context, find clues, form the picture, flag ambiguities, state confidence.
-**Returns.** A cited report. No fabrication. Link only what was actually read.
+---
+
+## Role Specifications
+
+### watchdog
+
+- **Capability tier.** Light to medium reasoning with autonomous monitoring.
+- **When.** A PR must reach green, or the user asks to babysit/monitor a PR.
+- **Brief template:**
+  ```markdown
+  Role: watchdog
+  Task: Drive PR <pr_number_or_url> to green.
+  Instructions:
+  1. Poll PR status and checks using `gh pr checks <pr>`.
+  2. If conflicts occur, identify conflicting files and report or resolve if straightforward.
+  3. If CI fails, inspect logs, identify the root failure, and apply minimal fixes.
+  4. If review/bot comments are posted, triage per `references/triage.md`:
+     - Fix valid bugs/security issues.
+     - Dismiss false positives with concrete explanation.
+     - Ask if high-risk or ambiguous.
+  5. Stop and report as soon as all checks pass. Do not loop past green. Do not merge unless explicitly authorized.
+  ```
+  <!-- EDIT: pr-template -->
+
+### general
+
+- **Capability tier.** Mechanical worker or targeted implementer.
+- **When.** Isolated, self-contained work that runs independently from the main thread.
+- **Brief template:**
+  ```markdown
+  Role: general
+  Task: <clear_task_summary>
+  Target files: <comma_separated_paths>
+  Invariants & Data Shapes: <key_boundaries>
+  Verification: Run `<test_or_verification_command>` and ensure it passes.
+  Return: Provide only the summary of changes and verification evidence.
+  ```
+
+### research
+
+- **Capability tier.** High context, read-only analytical reasoning.
+- **When.** An investigation, architecture review, or understanding task.
+- **Brief template:**
+  ```markdown
+  Role: research
+  Task: Investigate <question_or_subsystem>.
+  Focus areas: <specific_files_or_flows>
+  Instructions:
+  1. Trace code paths, dependencies, and execution flows using read/grep/glob.
+  2. Identify ambiguities, design rationale, or regressions.
+  3. Report findings with exact file and line citations. Link only artifacts you actually read.
+  ```

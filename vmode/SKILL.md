@@ -14,9 +14,11 @@ Start every task by checking the required skills are available, then reading the
 
 Remaining triggers.
 
-- Implementation, requirements clear -> open `brainstorming`.
-- Implementation, foggy or bigger than one session -> open `wayfinder`.
+- New feature or behavior change -> read `playbooks/feature.md`.
+- Bug, defect, or unexpected regression -> read `playbooks/bug-fix.md`.
+- Empirical fork, visual design, or throwaway layout -> read `playbooks/prototype.md`.
 - Understanding a thing, or "how or why does this work" -> read `playbooks/investigation.md` and use the `research` role.
+- PR babysitting, CI green, or review feedback -> read `playbooks/babysit.md` and consult `references/triage.md`.
 - Scoped unit or functional change -> use `test-driven-development`.
 - Before asking the user a "which approach" fork -> check whether the answer is observable, then probe; reserve the ask for a preference call.
 - A pattern that keeps repeating -> suggest distilling it into a small skill; ask the user first.
@@ -40,7 +42,7 @@ vmode depends on these. Check they are available when vmode starts; if any is mi
 - `requesting-code-review`
 - `receiving-code-review`
 
-Its own roles and playbooks ship inside vmode.
+Its own roles, playbooks, and references ship inside vmode.
 
 ## Principles
 
@@ -48,16 +50,18 @@ Each principle names when it applies. Read it before acting on that situation.
 
 - **Behavior first.** When a feature is user-facing. Prove the behavior with behavior/feature tests (BDD), not just that functions pass.
 - **TDD for scope.** When the change is scoped or non-behavioral. Write the unit test first via `test-driven-development`.
+- **Reproduce before fixing.** When addressing any defect. Create an observable repro before writing code.
 - **Minimal, and long-term.** When sizing a change, or tempted to stack a "quick fix". Smallest change that truly solves it, and prefer a real long-term fix.
 - **Verify, don't assume.** When about to declare done. Prove it against the real artifact, not "it compiles".
+- **The ask is the slow path.** Before asking the user a fork. Check whether the answer is observable, then probe; reserve the ask for a preference call.
 - **Confirm before posting.** When a review or comment goes to GitHub. Check the report is sound first.
+- **Triage before churning.** When handling review or bot comments. Classify into fix, dismiss with proof, or ask.
 - **Keep generated docs local.** When planning or brainstorming produced a spec, plan, or similar doc. Keep it local; commit to the remote origin only when the user asks.
 - **PR template.** When opening a PR. Follow the repo or org template.
 - **Babysit, then stop.** When a PR needs to reach green. Drive it there, then stop and report. Never loop past green.
 - **Delegate what is isolated.** When work is unrelated to the main thread. Send it to a subagent with a clear, self-contained brief.
 - **Autonomy line.** Always. Proceed on reversible work, pause for irreversible writes. Candor over agreement, and "no" is valid.
 - **Principles trace to a decision.** In every reply. Name a principle only when it changed a concrete choice.
-- **The ask is the slow path.** Before asking the user a fork. Check whether the answer is observable, then probe; reserve the ask for a preference call.
 
 ## Writing the reply
 
@@ -79,18 +83,20 @@ Comments follow the same rule as the reply. Write them clean as you go. A flat "
 - **Keep a comment only for a non-obvious why.** If the code can't show the reason, comment it. Otherwise don't.
 - **Applies everywhere.** Every file you produce, including subagent diffs and verify scripts.
 
-## Roles
+## Roles & Subagents
 
-Three model-agnostic capabilities. Read `references/roles.md` for when to use each and what to ask. You own every subagent's work: review its diff, write your own summary, never pass through what it said.
+Three model-agnostic capabilities. When delegating, invoke the subagent mechanism available in the host harness (such as OpenCode's `subagent` tool, Pi's `subagent` tool/extension, or background process dispatch) using the role's prompt brief.
 
-- **watchdog** drives a PR to green, then stops with a report.
+- **watchdog** drives a PR to green, triages reviews, then stops with a report.
 - **general** handles isolated work with a clear brief.
 - **research** builds the picture for an investigation and returns a cited report.
+
+Read `references/roles.md` for role specifications and dispatch instructions. You own every subagent's work: review its diff, write your own summary, and never pass through unverified assertions.
 
 ## Adapt me
 
 Edit only these spots to fit your stack and tools. Everything else is style, not stack.
 
-- The behavior-test step in `playbooks/implementation.md`. Marker `<!-- EDIT: behavior-test -->`.
+- The behavior-test step in `playbooks/feature.md`. Marker `<!-- EDIT: behavior-test -->`.
 - The PR template reference in `references/roles.md`. Marker `<!-- EDIT: pr-template -->`.
 - The description above, to name the person or project.

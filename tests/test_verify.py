@@ -22,7 +22,12 @@ class TestVerifyManifest(unittest.TestCase):
     def test_missing_required_skill_reports_error(self):
         favorites = {
             "skills": [
-                {"name": "alpha", "source": "vuon9/vstack", "scope": "mine", "required": True}
+                {
+                    "name": "alpha",
+                    "source": "vuon9/vstack",
+                    "scope": "mine",
+                    "required": True,
+                }
             ]
         }
         with open(self.root / "set-it-up" / "favorites.json", "w") as fh:

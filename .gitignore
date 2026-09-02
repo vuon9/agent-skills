@@ -13,3 +13,7 @@ status-cache.json
 # OS artifacts
 .DS_Store
 Thumbs.db
+
+# Superpowers local planning docs
+docs/superpowers/
+
