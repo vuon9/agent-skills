@@ -16,6 +16,9 @@ import argparse
 import json
 import os
 import sys
+from pathlib import Path
+
+from verify import verify_manifest
 
 MANIFEST = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "..", "favorites.json"
@@ -107,6 +110,7 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("list")
+    sub.add_parser("verify")
 
     p_add = sub.add_parser("add")
     p_add.add_argument("name")
@@ -126,6 +130,17 @@ def main():
     p_req.add_argument("value", type=lambda v: v.lower() in ("true", "1", "yes"))
 
     args = parser.parse_args()
+
+    if args.command == "verify":
+        repo_root = Path(__file__).resolve().parent.parent.parent
+        errors = verify_manifest(repo_root)
+        if errors:
+            for err in errors:
+                print(f"ERROR: {err}", file=sys.stderr)
+            sys.exit(1)
+        print("Verification passed.")
+        return
+
     data = load()
 
     if args.command == "list":
