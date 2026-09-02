@@ -1,6 +1,6 @@
 ---
 name: vstack
-description: Vuong's preferred development workflow for any kind of software. A manual mode triggered with /vstack. Behavior-first proof, minimal long-term fixes, review and PR discipline, implementation and investigation tracks, and model-agnostic subagent roles (watchdog, general, research).
+description: "Use when developing software in vstack mode: Vuong's preferred workflow for any kind of software, a manual mode triggered with /vstack. Behavior-first proof, minimal long-term fixes, review and PR discipline, implementation and investigation tracks, and model-agnostic subagent roles (watchdog, general, research)."
 disable-model-invocation: true
 ---
 

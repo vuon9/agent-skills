@@ -1,6 +1,6 @@
 ---
 name: setup-vstack
-description: Install, refresh, and catalog Vuong's agent skills (written + preferred from other authors) using favorites.json (a repo + skill-name manifest with scope and required flags) and wrapper scripts. Use when restoring or updating the global skill set, installing vstack's required skills, adding, removing, or changing the source of a favorite, or checking what is installed.
+description: Use when restoring or updating the global skill set, installing vstack's required skills, adding, removing, or changing the source of a favorite, or checking what is installed. Installs, refreshes, and catalogs Vuong's agent skills (written + preferred from other authors) using favorites.json (a repo + skill-name manifest with scope and required flags) and wrapper scripts.
 ---
 
 # Setup VStack
