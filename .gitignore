@@ -10,6 +10,9 @@ __pycache__/
 # Local state / runtime caches
 status-cache.json
 
+# Local pi runtime state
+.pi/
+
 # OS artifacts
 .DS_Store
 Thumbs.db
