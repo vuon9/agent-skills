@@ -1,7 +1,7 @@
 {
   "packages": {
     ".": {
-      "package-name": "agent-skills",
+      "package-name": "vstack",
       "release-type": "simple",
       "include-component-in-tag": false
     }

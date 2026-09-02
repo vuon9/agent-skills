@@ -1,10 +1,10 @@
 ---
-name: vm
-description: Vuong's preferred development workflow for any kind of software. A manual mode triggered with /vm. Behavior-first proof, minimal long-term fixes, review and PR discipline, implementation and investigation tracks, and model-agnostic subagent roles (watchdog, general, research).
+name: vstack
+description: Vuong's preferred development workflow for any kind of software. A manual mode triggered with /vstack. Behavior-first proof, minimal long-term fixes, review and PR discipline, implementation and investigation tracks, and model-agnostic subagent roles (watchdog, general, research).
 disable-model-invocation: true
 ---
 
-# vm
+# vstack
 
 A manual mode for building software the way Vuong would. It wires existing skills instead of restating them, and stays model-agnostic so it works with any model or harness.
 
@@ -30,7 +30,7 @@ Remaining triggers.
 
 ## Required skills
 
-vm depends on these. Check they are available when vm starts; if any is missing, run `install-vm-skills --required`.
+vstack depends on these. Check they are available when vstack starts; if any is missing, run `setup-vstack --required`.
 
 - `brainstorming`
 - `wayfinder`
@@ -40,7 +40,7 @@ vm depends on these. Check they are available when vm starts; if any is missing,
 - `requesting-code-review`
 - `receiving-code-review`
 
-Its own roles and playbooks ship inside vm.
+Its own roles and playbooks ship inside vstack.
 
 ## Principles
 

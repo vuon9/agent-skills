@@ -7,21 +7,27 @@ Commands:
     [--scope mine|external] [--required]
   remove <name>                 Remove a favorite from the manifest.
   set-source <name> <repo>      Change only the source of an existing favorite.
-  set-required <name> <true|false>  Mark a favorite as required by vm or not.
+  set-required <name> <true|false>  Mark a favorite as required by vstack or not.
 
 After any change, run scripts/install.py to apply it to the local machine.
 """
+
 import argparse
 import json
 import os
 import sys
 
-MANIFEST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "favorites.json")
+MANIFEST = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "favorites.json"
+)
 
 
 def load():
-    with open(MANIFEST) as fh:
-        data = json.load(fh)
+    try:
+        with open(MANIFEST) as fh:
+            data = json.load(fh)
+    except (OSError, ValueError) as exc:
+        raise RuntimeError(f"could not load {MANIFEST}: {exc}") from exc
     if "skills" not in data:
         data["skills"] = []
     return data
@@ -29,9 +35,12 @@ def load():
 
 def save(data):
     data["skills"].sort(key=lambda s: s["name"])
-    with open(MANIFEST, "w") as fh:
-        json.dump(data, fh, indent=2)
-        fh.write("\n")
+    try:
+        with open(MANIFEST, "w") as fh:
+            json.dump(data, fh, indent=2)
+            fh.write("\n")
+    except OSError as exc:
+        raise RuntimeError(f"could not write {MANIFEST}: {exc}") from exc
 
 
 def find(entries, name):
@@ -46,7 +55,9 @@ def cmd_list(data):
         source = entry.get("source", "?")
         scope = entry.get("scope", "external")
         required = "required" if entry.get("required") else ""
-        suffix = f"  ({entry['note']})" if source == "local" and entry.get("note") else ""
+        suffix = (
+            f"  ({entry['note']})" if source == "local" and entry.get("note") else ""
+        )
         print(f"{entry['name']}\t{source}\t{scope}\t{required}{suffix}")
 
 
