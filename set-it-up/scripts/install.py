@@ -67,7 +67,28 @@ def parse_args():
     group.add_argument(
         "--all", action="store_true", help="install everything (default)"
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="print actions without running external installation commands",
+    )
     return parser.parse_args()
+
+
+def run_or_dry(cmd, dry_run):
+    """Run cmd, or print it when dry_run is set.
+
+    Returns (exit_code, error_text) where error_text is the captured
+    stderr/stdout on a real failure and an empty string otherwise.
+    """
+    if dry_run:
+        print(f"[dry-run] would run: {' '.join(cmd)}")
+        return 0, ""
+    res = subprocess.run(cmd, check=False, capture_output=True)
+    if res.returncode == 0:
+        return 0, ""
+    err = (res.stderr or res.stdout or b"").decode(errors="replace").strip()
+    return res.returncode, err
 
 
 def main():
@@ -84,6 +105,7 @@ def main():
     print(f"scope: {scope}  |  entries: {len(skills)}")
 
     ok, failed = [], []
+    dry_run = args.dry_run
 
     for entry in skills:
         name = entry["name"]
@@ -100,14 +122,13 @@ def main():
             print(
                 f"[swap] {name}: removing existing ({existing}) before installing from {source}"
             )
-            subprocess.run(
+            run_or_dry(
                 ["npx", "-y", "skills", "remove", name, "-g", "-y"],
-                check=False,
-                capture_output=True,
+                dry_run,
             )
 
         print(f"[install] {name} <- {source}")
-        res = subprocess.run(
+        exit_code, err = run_or_dry(
             [
                 "npx",
                 "-y",
@@ -120,13 +141,11 @@ def main():
                 "--full-depth",
                 "-y",
             ],
-            check=False,
-            capture_output=True,
+            dry_run,
         )
-        if res.returncode == 0:
+        if exit_code == 0:
             ok.append(name)
         else:
-            err = (res.stderr or res.stdout or b"").decode(errors="replace").strip()
             failed.append((name, err))
             print(f"[FAILED] {name}:\n{err}")
 
