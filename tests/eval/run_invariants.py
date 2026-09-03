@@ -15,8 +15,12 @@ import sys
 import unittest
 from pathlib import Path
 
-from .invariants import ALL_CHECKS, verify_trace
-from .schema import from_dict
+if __package__ in (None, ""):
+    # Allow running as a plain script: python3 tests/eval/run_invariants.py
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from tests.eval.invariants import ALL_CHECKS, verify_trace
+from tests.eval.schema import from_dict
 
 
 def _targets():
