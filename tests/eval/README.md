@@ -2,7 +2,7 @@
 
 Deterministic, low-LLM checks for the vmode skill contracts and the recorded
 agent-run traces. Implements the architecture in the (local) plan
-`docs/vmode-eval-systematic-plan.md`.
+`docs/eval/vmode-eval-systematic-plan.md`.
 
 The harness inverts the evaluation pyramid: almost everything here is 0% LLM,
 fast, and CI-safe. LLM use is confined to opt-in Level-3 micro-probes that are

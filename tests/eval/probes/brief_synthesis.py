@@ -1,6 +1,6 @@
 """Level 3: targeted semantic probes (opt-in, minimal LLM).
 
-The plan (docs/vmode-eval-systematic-plan.md) allows <20% LLM only where
+The plan (docs/eval/vmode-eval-systematic-plan.md) allows <20% LLM only where
 deterministic parsing is insufficient, and routes the semantic turn through
 a cheap contributor-tier model (opencode/muse-spark-1.2-contributor-free in
 CI). These probes are NOT auto-run by unittest discovery (no test_ prefix, no
@@ -72,7 +72,11 @@ def probe_brief_restraint(trace: dict) -> str:
     for s in subs:
         files = set()
         for tc in s["tool_calls"]:
-            cmd = str(tc.get("input", {}).get("command") or tc.get("input", {}).get("argsSummary") or "")
+            cmd = str(
+                tc.get("input", {}).get("command")
+                or tc.get("input", {}).get("argsSummary")
+                or ""
+            )
             files |= _file_tokens(cmd)
         seen_targets.append(files)
     overlapping = False
@@ -131,7 +135,9 @@ def probe_behavior_proof(trace: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description="Level-3 semantic micro-probes.")
-    parser.add_argument("trace_json", help="extracted trace JSON (trace_extractor output)")
+    parser.add_argument(
+        "trace_json", help="extracted trace JSON (trace_extractor output)"
+    )
     parser.add_argument(
         "--probe",
         choices=[
