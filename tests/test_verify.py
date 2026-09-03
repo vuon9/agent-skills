@@ -30,7 +30,7 @@ class TestVerifyManifest(unittest.TestCase):
                 }
             ]
         }
-        with open(self.root / "set-it-up" / "favorites.json", "w") as fh:
+        with open(self.root / "set-it-up" / "skills.json", "w") as fh:
             json.dump(favorites, fh)
 
         vmode_content = "---\nname: vmode\n---\n## Required skills\n\n- `beta`\n"

@@ -1,7 +1,7 @@
 # Set It Up
 
 Catalog and reinstall Vuong's agent skills (written + preferred from other
-authors) via a single manifest (`favorites.json`).
+authors) via a single manifest (`skills.json`).
 
 ## Use it with a prompt
 
@@ -23,7 +23,7 @@ Only needed when you want the underlying commands directly.
 
 - `python3 scripts/manage.py`. List, add, remove, change source, mark required,
   verify.
-- `python3 scripts/manage.py verify`. Check `favorites.json`, the vmode
+- `python3 scripts/manage.py verify`. Check `skills.json`, the vmode
   required list, and repo-local skills agree. Exits 0 when clean.
 - `python3 scripts/install.py`. Install/refresh. Filters: `--mine`, `--external`,
   `--required`, `--all` (default).

@@ -22,12 +22,12 @@ npx skills add -g vuon9/vstack
 
 The `skills` tool opens an interactive flow where you can choose which skills
 and agents to install. The collection is managed and refreshed by
-[set-it-up](./set-it-up/SKILL.md) (`favorites.json` is the
+[set-it-up](./set-it-up/SKILL.md) (`skills.json` is the
 single source of truth for what gets installed).
 
 ## Verify
 
-A deterministic check validates the collection: every `favorites.json` entry,
+A deterministic check validates the collection: every `skills.json` entry,
 the `## Required skills` list in [vmode](./vmode/SKILL.md), and the
 repo-local skills agree (name, source, scope, description, README).
 
@@ -49,7 +49,8 @@ CI runs the same verification plus the unit test suite on every push and PR
 ### Written by me
 
 - [vmode](./vmode/SKILL.md). The manual development-workflow mode (behavior-first, review and PR discipline, watchdog/general/research roles)
-- [set-it-up](./set-it-up/SKILL.md). Install and refresh this collection from `favorites.json`
+- [set-it-up](./set-it-up/SKILL.md). Install and refresh this collection from `skills.json`
+- [automate-me](./skills/automate-me/SKILL.md). Capture personal working conventions and preferences into an agent `-mode` skill
 - [shipping-darwin-apps](./skills/shipping-darwin-apps/SKILL.md). Build and ship iOS/macOS apps (signing, notarization, TestFlight, DMG)
 - [gh-workflows](https://github.com/vuon9/gh-workflows). Reusable GitHub Actions workflows
 

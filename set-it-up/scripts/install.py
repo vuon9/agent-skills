@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install skills from favorites.json from their upstream sources.
+"""Install skills from skills.json from their upstream sources.
 
 Idempotent: rerunning it refreshes git-sourced skills. If a skill is already
 installed from a different source, it is removed first so the new source wins.
@@ -18,7 +18,7 @@ import subprocess
 import sys
 
 SKILL_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MANIFEST = os.path.join(SKILL_DIR, "favorites.json")
+MANIFEST = os.path.join(SKILL_DIR, "skills.json")
 LOCK_PATH = os.path.expanduser("~/.agents/.skill-lock.json")
 
 
@@ -51,7 +51,7 @@ def filter_skills(skills, scope):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Install skills from favorites.json.")
+    parser = argparse.ArgumentParser(description="Install skills from skills.json.")
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
         "--mine", action="store_true", help="install vuong-written skills only"

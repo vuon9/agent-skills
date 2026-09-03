@@ -1,15 +1,15 @@
 ---
 name: set-it-up
-description: Use when restoring or updating the global skill set, installing vmode's required skills, adding, removing, or changing the source of a favorite, or checking what is installed. Installs, refreshes, and catalogs Vuong's agent skills (written + preferred from other authors) using favorites.json (a repo + skill-name manifest with scope and required flags) and wrapper scripts.
+description: Use when restoring or updating the global skill set, installing vmode's required skills, adding, removing, or changing the source of a favorite, or checking what is installed. Installs, refreshes, and catalogs Vuong's agent skills (written + preferred from other authors) using skills.json (a repo + skill-name manifest with scope and required flags) and wrapper scripts.
 ---
 
 # Set It Up
 
-Catalog Vuong's skills in `favorites.json` (each entry has a `source` repo and a `name`, plus `scope` and `required`), then install or refresh them. This keeps a single, versioned list of every skill that matters instead of relying on the installed state alone.
+Catalog Vuong's skills in `skills.json` (each entry has a `source` repo and a `name`, plus `scope` and `required`), then install or refresh them. This keeps a single, versioned list of every skill that matters instead of relying on the installed state alone.
 
 ## Files
 
-- `favorites.json`. The manifest. Entries carry `name`, `source`, `scope` (mine/external), and an optional `required` flag for vmode.
+- `skills.json`. The manifest. Entries carry `name`, `source`, `scope` (mine/external), and an optional `required` flag for vmode.
 - `scripts/manage.py`. List, add, remove, change source, mark required.
 - `scripts/install.py`. Installs or refreshes entries, filtered by scope. Idempotent.
 - `scripts/update.py`. Runs `npx skills update -g` to refresh installed git-sourced skills.

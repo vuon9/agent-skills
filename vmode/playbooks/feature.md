@@ -8,6 +8,9 @@ Use when building or adding new behavior.
    Requirements clear? Open `brainstorming` and drive it to a concrete design.
    Scope foggy or spans multiple sessions? Open `wayfinder` and resolve the tickets before coding.
 2. **Design before code.**
+   When integrating into existing systems or complex subsystems, map the territory before modeling:
+   - Trace integration points via `how`: understand existing lifecycle hooks, call chains, and data models before introducing new abstractions.
+   - Check constraints via `why`: inspect `git blame` or history on shared boundaries to avoid violating established contracts or repeating discarded patterns.
    Name the data shape and boundary first. Model the domain with clear state structures rather than scattered conditionals.
 3. **Throughput checkpoint.**
    Before implementation, write the throughput checkpoint as four items:
@@ -22,7 +25,7 @@ Use when building or adding new behavior.
    - Clear scope and exact target paths.
    - Named data shape and boundary invariants.
    - Verification command or criteria.
-   - Capability role brief (`mechanical` for precise edits, `reasoning` for architectural balance).
+   - Capability role brief (`general` for isolated implementation, `research` for exploratory tracing).
    Require the child to return raw execution evidence (passing test logs, `git diff --stat`). Review the resulting diff yourself; do not pass through subagent claims unverified.
 5. **Prove the behavior.**
    For user-facing features, run behavior/feature tests. Prove it against the real artifact, not just "it compiles". Exercise the user-facing boundary (CLI output/exit codes, HTTP response, or public API contract) with automated assertions. If no BDD framework exists, write an executable acceptance test or runner script exercising this outer boundary.

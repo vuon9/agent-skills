@@ -6,6 +6,11 @@
       "scope": "external"
     },
     {
+      "name": "automate-me",
+      "source": "vuon9/vstack",
+      "scope": "mine"
+    },
+    {
       "name": "brainstorming",
       "source": "obra/superpowers",
       "scope": "external",

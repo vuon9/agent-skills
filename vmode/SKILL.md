@@ -17,7 +17,7 @@ Remaining triggers.
 - New feature or behavior change -> read `playbooks/feature.md`.
 - Bug, defect, or unexpected regression -> read `playbooks/bug-fix.md`.
 - Empirical fork, visual design, or throwaway layout -> read `playbooks/prototype.md`.
-- Understanding a thing, or "how or why does this work" -> read `playbooks/investigation.md` and use the `research` role.
+- Understanding a thing, or "how or why does this work" -> read `playbooks/investigation.md` (leverages `how` and `why` patterns) and use the `research` role.
 - PR babysitting, CI green, or review feedback -> read `playbooks/babysit.md` and consult `references/triage.md`.
 - Scoped unit or functional change -> use `test-driven-development`.
 - Before asking the user a "which approach" fork -> check whether the answer is observable, then probe; reserve the ask for a preference call.

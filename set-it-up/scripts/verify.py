@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic verification of favorites.json, vmode required list, and skill files."""
+"""Deterministic verification of skills.json, vmode required list, and skill files."""
 
 import json
 import re
@@ -44,7 +44,7 @@ def parse_frontmatter(skill_file: Path) -> dict[str, str]:
 
 def verify_manifest(repo_root: Path) -> list[str]:
     errors = []
-    manifest_path = repo_root / "set-it-up" / "favorites.json"
+    manifest_path = repo_root / "set-it-up" / "skills.json"
     vmode_path = repo_root / "vmode" / "SKILL.md"
 
     if not manifest_path.is_file():
@@ -126,7 +126,7 @@ def verify_manifest(repo_root: Path) -> list[str]:
 
         if only_in_manifest or only_in_vmode:
             errors.append(
-                f"required skill mismatch between favorites.json and vmode/SKILL.md: "
+                f"required skill mismatch between skills.json and vmode/SKILL.md: "
                 f"manifest only={sorted(only_in_manifest)}, vmode only={sorted(only_in_vmode)}"
             )
 
