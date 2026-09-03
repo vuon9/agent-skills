@@ -38,7 +38,7 @@ jobs:
         Do NOT modify files, push, or install anything. If you want to show
         file content, only use your read tool.
 
-        1. Read the favorites manifest and the mode skill:
+        1. Read the skills manifest and the mode skill:
            `set-it-up/skills.json`, `vmode/SKILL.md`.
            Repo-local skills live at the repo root (`set-it-up/`, `vmode/`)
            or under `skills/` (the rest of the collection).
