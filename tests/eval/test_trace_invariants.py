@@ -73,7 +73,9 @@ class TestW4Overlap(unittest.TestCase):
                 timed.append(s)
         self.assertGreaterEqual(len(timed), 2, "need at least two timed subagents")
         a, b = timed[0], timed[1]
-        overlap = max(0, min(a.end_time_ms, b.end_time_ms) - max(a.start_time_ms, b.start_time_ms))
+        overlap = max(
+            0, min(a.end_time_ms, b.end_time_ms) - max(a.start_time_ms, b.start_time_ms)
+        )
         self.assertGreater(overlap, 0, "worker runs must overlap in time")
 
     def test_workers_touched_disjoint_files(self):

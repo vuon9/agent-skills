@@ -71,7 +71,11 @@ def _content_text(content) -> str:
     parts = []
     if isinstance(content, list):
         for block in content:
-            if isinstance(block, dict) and block.get("type") == "text" and isinstance(block.get("text"), str):
+            if (
+                isinstance(block, dict)
+                and block.get("type") == "text"
+                and isinstance(block.get("text"), str)
+            ):
                 parts.append(block["text"])
     return "\n".join(parts)
 
@@ -147,7 +151,11 @@ def _enrich_from_artifacts(trace: TaskTrace, artifacts_dir: Path | None) -> None
             if rt == "tool_start":
                 call = ToolCall(
                     tool=rec.get("toolName", ""),
-                    input={"command": rec.get("argsPreview") or rec.get("argsPayload") or ""},
+                    input={
+                        "command": rec.get("argsPreview")
+                        or rec.get("argsPayload")
+                        or ""
+                    },
                     start_time_ms=ts,
                 )
                 cid = rec.get("toolCallId", "")
@@ -212,13 +220,23 @@ def extract(path: Path, **kwargs) -> TaskTrace:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert harness logs to TaskTrace JSON.")
+    parser = argparse.ArgumentParser(
+        description="Convert harness logs to TaskTrace JSON."
+    )
     parser.add_argument("input", help="session .jsonl or activity run.log")
-    parser.add_argument("--task-type", choices=["feature", "bugfix", "investigation", "parallel"])
+    parser.add_argument(
+        "--task-type", choices=["feature", "bugfix", "investigation", "parallel"]
+    )
     parser.add_argument("--task-id", default="")
-    parser.add_argument("--patch-diff", default="", help="file containing the task patch diff")
-    parser.add_argument("--artifacts-dir", default="", help="dir with subagent-artifacts transcripts")
-    parser.add_argument("--output", default="", help="write JSON here instead of stdout")
+    parser.add_argument(
+        "--patch-diff", default="", help="file containing the task patch diff"
+    )
+    parser.add_argument(
+        "--artifacts-dir", default="", help="dir with subagent-artifacts transcripts"
+    )
+    parser.add_argument(
+        "--output", default="", help="write JSON here instead of stdout"
+    )
     args = parser.parse_args()
 
     artifacts = Path(args.artifacts_dir) if args.artifacts_dir else None
@@ -231,7 +249,9 @@ def main():
     )
     data = __import__("schema").to_dict(trace)
     if args.output:
-        Path(args.output).write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+        Path(args.output).write_text(
+            json.dumps(data, indent=2) + "\n", encoding="utf-8"
+        )
         print(f"wrote {args.output}")
     else:
         print(json.dumps(data, indent=2))

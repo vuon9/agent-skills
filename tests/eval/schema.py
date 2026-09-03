@@ -53,6 +53,7 @@ class TaskTrace:
 # (De)serialization helpers
 # ---------------------------------------------------------------------------
 
+
 def to_dict(trace: TaskTrace) -> dict:
     return {
         "task_id": trace.task_id,

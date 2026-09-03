@@ -75,6 +75,7 @@ def _has_tool(trace: TaskTrace, predicate) -> bool:
 # W1: line-citation anchoring
 # ---------------------------------------------------------------------------
 
+
 def check_w1_line_citations(trace: TaskTrace) -> list[str]:
     """Subagent file:line citations must be anchored by a grep/read on that file.
 
@@ -102,6 +103,7 @@ def check_w1_line_citations(trace: TaskTrace) -> list[str]:
 # W2/W7: functional skill presence check before work
 # ---------------------------------------------------------------------------
 
+
 def check_w2_skill_presence_check(trace: TaskTrace) -> list[str]:
     """Before modifying code the parent must touch the skill store or run a check.
 
@@ -113,7 +115,8 @@ def check_w2_skill_presence_check(trace: TaskTrace) -> list[str]:
     for tc in trace.tool_calls:
         cmd = str(tc.input.get("command") or tc.input.get("argsSummary") or "")
         if probe_re.search(cmd) and any(
-            kw in cmd for kw in ("ls", "read", "find", "cat", "manage.py verify", "install.py")
+            kw in cmd
+            for kw in ("ls", "read", "find", "cat", "manage.py verify", "install.py")
         ):
             cmd_seen = True
             break
@@ -125,6 +128,7 @@ def check_w2_skill_presence_check(trace: TaskTrace) -> list[str]:
 # ---------------------------------------------------------------------------
 # W3: outer-boundary behavior proof for feature tasks
 # ---------------------------------------------------------------------------
+
 
 def check_w3_outer_boundary(trace: TaskTrace) -> list[str]:
     """Feature diffs must prove behavior at the user boundary, not only units."""
@@ -144,6 +148,7 @@ def check_w3_outer_boundary(trace: TaskTrace) -> list[str]:
 # ---------------------------------------------------------------------------
 # W4: true parallel execution window
 # ---------------------------------------------------------------------------
+
 
 def check_w4_parallel_window(trace: TaskTrace) -> list[str]:
     """Two or more timed subagents must overlap; serial needs a stated reason.
@@ -176,12 +181,16 @@ def check_w4_parallel_window(trace: TaskTrace) -> list[str]:
 # W5: headless local-review fallback
 # ---------------------------------------------------------------------------
 
+
 def check_w5_review_fallback(trace: TaskTrace) -> list[str]:
     """When hunk-review is impossible, an independent reviewer must run."""
     text = _all_text(trace)
     skip_no_session = re.search(r"skip:\s*no live Hunk|no live Hunk session", text)
     has_fallback = bool(
-        re.search(r"requesting-code-review|reviewer subagent|dispatch.*review|agent.?reviewer", text)
+        re.search(
+            r"requesting-code-review|reviewer subagent|dispatch.*review|agent.?reviewer",
+            text,
+        )
     )
     if skip_no_session and not has_fallback:
         return ["W5: hunk-review skipped with no independent-review fallback"]
@@ -191,6 +200,7 @@ def check_w5_review_fallback(trace: TaskTrace) -> list[str]:
 # ---------------------------------------------------------------------------
 # W6: raw evidence attachment
 # ---------------------------------------------------------------------------
+
 
 def check_w6_raw_evidence(trace: TaskTrace) -> list[str]:
     """Delegated implementation work returns raw execution evidence.
