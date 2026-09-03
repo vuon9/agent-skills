@@ -84,12 +84,12 @@ class TestRequiredSkillDependencies(unittest.TestCase):
 
     Required skills are a mix of repo-vendored skills and external favorites
     (obra/superpowers, modem-dev/hunk). Existence means: present in the repo
-    folder when vendored, or present as a favorites.json entry when external.
+    folder when vendored, or present as a skills.json entry when external.
     """
 
     def setUp(self):
         self.manifest = json.loads(
-            (SETUP_DIR / "favorites.json").read_text(encoding="utf-8")
+            (SETUP_DIR / "skills.json").read_text(encoding="utf-8")
         )["skills"]
 
     def _manifest_source(self, name):
@@ -113,7 +113,7 @@ class TestRequiredSkillDependencies(unittest.TestCase):
             tracked = skill in [e.get("name") for e in self.manifest]
             self.assertTrue(
                 vendored or tracked,
-                f"required skill '{skill}' neither vendored nor in favorites.json",
+                f"required skill '{skill}' neither vendored nor in skills.json",
             )
 
     def test_required_skills_marked_required_in_manifest(self):
@@ -122,7 +122,7 @@ class TestRequiredSkillDependencies(unittest.TestCase):
         self.assertEqual(
             missing,
             set(),
-            f"required skills missing required:true in favorites.json: {missing}",
+            f"required skills missing required:true in skills.json: {missing}",
         )
 
 

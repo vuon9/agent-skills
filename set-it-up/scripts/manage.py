@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Manage the favorites.json manifest.
+"""Manage the skills.json manifest.
 
 Commands:
-  list                          Show current favorites (name, source, scope, required).
+  list                          Show current skills (name, source, scope, required).
   add <name> --source <repo>    Add a favorite, or change its source if it exists.
     [--scope mine|external] [--required]
   remove <name>                 Remove a favorite from the manifest.
@@ -21,7 +21,7 @@ from pathlib import Path
 from verify import verify_manifest
 
 MANIFEST = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "..", "favorites.json"
+    os.path.dirname(os.path.abspath(__file__)), "..", "skills.json"
 )
 
 
@@ -106,7 +106,7 @@ def cmd_set_required(data, name, value):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Manage favorites.json.")
+    parser = argparse.ArgumentParser(description="Manage skills.json.")
     sub = parser.add_subparsers(dest="command", required=True)
 
     sub.add_parser("list")

@@ -16,7 +16,7 @@ never auto-run.
 works on a clean checkout):
 
 - frontmatter integrity (name, "Use when" description, README) for every local skill
-- vmode required-skill list matches disk + favorites.json (`required: true`)
+- vmode required-skill list matches disk + skills.json (`required: true`)
 - no em dashes in vmode playbooks; no narrating-comment patterns in code blocks
 - role brief templates contain the evidence clauses (raw evidence, `grep -n`)
 

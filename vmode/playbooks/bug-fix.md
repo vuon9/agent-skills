@@ -11,8 +11,10 @@ Use when resolving a defect or unintended behavior.
    A bug you cannot reproduce is a bug you cannot prove fixed.
 2. **Binary-search the cause.**
    Form candidate hypotheses. Rule them out with runtime evidence until the single mechanism survives.
+   Trace the flow via the `how` pattern: follow the call chain and state transitions from trigger to failure point to isolate exactly where behavior diverged.
    Add temporary instrumentation if necessary to inspect real state. Do not guess.
 3. **Plan the minimal long-term fix.**
+   Check `why` before modifying existing logic: consult `git blame`, recent commits, or PR discussions to understand the intent and edge cases that shaped the current code. Do not break historical intent.
    Choose the smallest change that completely fixes the root cause. Avoid defensive band-aids that merely mask symptoms.
 4. **Implement red-to-green.**
    Write the failing test or assertion first via `test-driven-development`.

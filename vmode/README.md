@@ -43,7 +43,7 @@ vmode delegates subagent tasks through prompt instructions and role briefs rathe
 
 - **OpenCode**: Native built-in `subagent` tool (`general` and `explore` built-in, or custom profiles in `.opencode/agents/`).
 - **Pi (`@earendil-works/pi-coding-agent`)**: Invokes subagents via Pi's `subagent` extension or prompt instructions.
-- Subagents receive capability-tiered briefs (`mechanical`, `reasoning`, `watchdog`) so the user's configured model or parent harness executes them cleanly.
+- Subagents receive capability-tiered briefs (`general`, `research`, `watchdog`) so the user's configured model or parent harness executes them cleanly.
 
 ## Why the rules live in two layers
 
