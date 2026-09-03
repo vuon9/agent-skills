@@ -58,8 +58,14 @@ def _report(trace_path: str) -> str:
 def main():
     targets = _targets()
     if not targets:
-        print("No trace JSON given. Pass paths as args or set EVAL_TRACE=path.", file=sys.stderr)
-        print("Example: python3 tests/eval/run_invariants.py tests/eval/fixtures/trace_w4_concurrency.json", file=sys.stderr)
+        print(
+            "No trace JSON given. Pass paths as args or set EVAL_TRACE=path.",
+            file=sys.stderr,
+        )
+        print(
+            "Example: python3 tests/eval/run_invariants.py tests/eval/fixtures/trace_w4_concurrency.json",
+            file=sys.stderr,
+        )
         return 2
     failures = 0
     for path in targets:

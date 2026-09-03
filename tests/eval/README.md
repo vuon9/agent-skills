@@ -66,6 +66,31 @@ The existing CI workflow (`.github/workflows/validate.yml`) already runs
 `python3 -m unittest discover -s tests`, so Levels 1-2 and the probe
 deterministic paths run on every push and PR with zero API cost.
 
+### Level 3 in CI (semantic probes)
+
+`.github/workflows/vmode-eval.yml` gates vmode changes on the full eval stack,
+path-limited to `vmode/`, `tests/eval/`, and the workflow itself:
+
+- `static-evals`: Level 1 + Level 2 + probe pre-checks, 0% LLM, gating.
+- `llm-evals`: Level 3 semantic probes run after the static gate via the
+  `vuon9/gh-workflows` reusable `ai-code-review.yml` with
+  `opencode/muse-spark-1.2-contributor-free` (zero-added-cost contributor
+  tier). It posts a compact PASS/FAIL verdict under the `vmode-llm-eval`
+  marker covering the three probes: brief restraint, behavior boundary,
+  review fallback.
+
+Run the probes locally on any extracted trace:
+
+```bash
+python3 tests/eval/probes/brief_synthesis.py <trace.json> --probe brief-restraint
+python3 tests/eval/probes/brief_synthesis.py <trace.json> --probe dismissal-justification
+python3 tests/eval/probes/brief_synthesis.py <trace.json> --probe behavior-proof
+```
+
+Set `EVAL_LLM_API` and `EVAL_LLM_MODEL` to enable the LLM branch; without
+them the probes return PASS/FAIL/GROUNDED/ALIGNED where deterministically
+provable and SKIP/NEEDS-LLM elsewhere, so CI stays 0-LLM.
+
 ## Ingesting a new run
 
 `trace_extractor.py` converts pi session transcripts (and optional child

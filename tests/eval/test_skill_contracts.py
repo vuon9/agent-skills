@@ -48,7 +48,9 @@ class TestSkillFrontmatter(unittest.TestCase):
     def _local_skill_dirs(self):
         dirs = [VSTACK_DIR, SETUP_DIR]
         if SKILLS_DIR.is_dir():
-            dirs += [d for d in sorted(SKILLS_DIR.iterdir()) if (d / "SKILL.md").is_file()]
+            dirs += [
+                d for d in sorted(SKILLS_DIR.iterdir()) if (d / "SKILL.md").is_file()
+            ]
         return [d for d in dirs if (d / "SKILL.md").is_file()]
 
     def test_all_local_skills_have_valid_frontmatter(self):
@@ -64,7 +66,9 @@ class TestSkillFrontmatter(unittest.TestCase):
                     desc.startswith("Use when"),
                     f"{skill_md} description must start with 'Use when'",
                 )
-                self.assertEqual(meta["name"], skill_dir.name, "frontmatter name != folder")
+                self.assertEqual(
+                    meta["name"], skill_dir.name, "frontmatter name != folder"
+                )
 
     def test_every_local_skill_has_readme(self):
         for skill_dir in self._local_skill_dirs():
@@ -96,10 +100,14 @@ class TestRequiredSkillDependencies(unittest.TestCase):
 
     def test_required_skills_exist_on_disk(self):
         text = (VSTACK_DIR / "SKILL.md").read_text(encoding="utf-8")
-        section = re.search(r"## Required skills\s*\n(.*?)(?:\n## |\Z)", text, re.DOTALL)
+        section = re.search(
+            r"## Required skills\s*\n(.*?)(?:\n## |\Z)", text, re.DOTALL
+        )
         assert section is not None, "vmode SKILL.md has no Required skills section"
         listed = set(re.findall(r"-\s*`([a-z0-9-]+)`", section.group(1)))
-        self.assertEqual(listed, REQUIRED_SKILLS, "required list drifted from canonical set")
+        self.assertEqual(
+            listed, REQUIRED_SKILLS, "required list drifted from canonical set"
+        )
         for skill in sorted(listed):
             vendored = (SKILLS_DIR / skill).is_dir() or (REPO_ROOT / skill).is_dir()
             tracked = skill in [e.get("name") for e in self.manifest]
@@ -112,7 +120,9 @@ class TestRequiredSkillDependencies(unittest.TestCase):
         listed_names = [e.get("name") for e in self.manifest if e.get("required")]
         missing = REQUIRED_SKILLS - set(listed_names)
         self.assertEqual(
-            missing, set(), f"required skills missing required:true in favorites.json: {missing}"
+            missing,
+            set(),
+            f"required skills missing required:true in favorites.json: {missing}",
         )
 
 
@@ -155,12 +165,16 @@ class TestRoleBriefTemplates(unittest.TestCase):
     """roles.md brief templates contain the evidence-return clauses (W6/W1 fixes)."""
 
     def setUp(self):
-        self.roles = (VSTACK_DIR / "references" / "roles.md").read_text(encoding="utf-8")
+        self.roles = (VSTACK_DIR / "references" / "roles.md").read_text(
+            encoding="utf-8"
+        )
 
     def test_general_brief_requires_raw_evidence(self):
         self.assertIn("git diff --stat", self.roles)
         self.assertIn("Return", self.roles)
-        self.assertRegex(self.roles, r"raw execution evidence|raw .*evidence|unsubstantiated claims")
+        self.assertRegex(
+            self.roles, r"raw execution evidence|raw .*evidence|unsubstantiated claims"
+        )
 
     def test_research_brief_requires_grep_anchored_citations(self):
         self.assertIn("grep -n", self.roles)
