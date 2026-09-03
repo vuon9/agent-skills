@@ -30,8 +30,9 @@ jobs:
       - name: Run Level 1 (static contracts)
         run: python3 -m unittest tests.eval.test_skill_contracts -v
       - name: Run Level 2 (trace invariants) + probe pre-checks
-        run: python3 -m unittest tests.eval.test_trace_invariants \
-          tests.eval.probes.test_brief_synthesis -v
+        run: |
+          python3 -m unittest tests.eval.test_trace_invariants \
+            tests.eval.probes.test_brief_synthesis -v
 
   llm-evals:
     name: 'llm-evals (muse-spark semantic probes)'
