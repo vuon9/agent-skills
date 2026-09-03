@@ -9,7 +9,7 @@ Importable by test_trace_invariants.py and by the probes module.
 
 import re
 
-from tests.eval.schema import TaskTrace
+from .schema import TaskTrace
 
 # ---------------------------------------------------------------------------
 # Shared helpers

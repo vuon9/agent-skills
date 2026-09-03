@@ -16,8 +16,8 @@ import json
 import unittest
 from pathlib import Path
 
-from tests.eval.invariants import verify_trace
-from tests.eval.schema import from_dict
+from .invariants import verify_trace
+from .schema import from_dict
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
