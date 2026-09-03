@@ -2,7 +2,15 @@
 
 A modular collection of skills and workflows for AI coding agents, designed to be harness- and model-agnostic.
 
-The workflow system in `vmode` is inspired by the trigger-and-principle architecture of `poteto-mode` (from `cursor/plugins/pstack`), refined into an editor-agnostic, lightweight form without vendor lock-in, proprietary model couplings, or complex external dependencies.
+The workflow system in `vmode` is inspired by the trigger-and-principle architecture of `poteto-mode` (from [cursor/plugins](https://github.com/cursor/plugins/tree/main/pstack)), refined into an editor-agnostic, lightweight form without vendor lock-in, proprietary model couplings, or complex external dependencies.
+
+## Prerequisites
+
+- **Python 3.10+** (Python 3.11 recommended). Used for collection verification (`set-it-up/scripts/verify.py`), installation tooling, and evaluation test suites.
+- **Node.js & npx** (Node 18+). Required to run `npx skills add` for installing skills into your agent environments.
+- **Hunk** (`hunk-review` skill). Used for interactive local diff reviews before opening pull requests. See [modem-dev/hunk](https://github.com/modem-dev/hunk).
+- **Cua Driver** (`cua-driver` skill). Optional runtime dependency for native desktop GUI automation on macOS, Windows, and Linux. See [trycua/cua](https://github.com/trycua/cua).
+- **GitHub CLI** (`gh`). Required for PR watchdog automation, checks polling, and issue publishing.
 
 ## Install
 

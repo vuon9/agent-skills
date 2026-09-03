@@ -1,7 +1,7 @@
 name: vmode-eval
 
 # Systematic evaluation gates for vmode changes
-# (docs/vmode-eval-systematic-plan.md):
+# (docs/eval/vmode-eval-systematic-plan.md):
 #   - static-evals: Level 1 (skill/playbook contracts) + Level 2 (W1-W7 trace
 #     invariants), 0% LLM, fast, gating.
 #   - llm-evals: Level 3 semantic probes (muse-spark), advisory semantic check
@@ -10,9 +10,9 @@ name: vmode-eval
 on:
   pull_request:
     paths:
-      - 'vmode/**'
-      - 'tests/eval/**'
-      - '.github/workflows/vmode-eval.yml'
+      - "vmode/**"
+      - "tests/eval/**"
+      - ".github/workflows/vmode-eval.yml"
 
 concurrency:
   group: vmode-eval-${{ github.event.pull_request.number || github.ref }}
@@ -20,13 +20,13 @@ concurrency:
 
 jobs:
   static-evals:
-    name: 'static-evals (contracts & traces)'
+    name: "static-evals (contracts & traces)"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - name: Run Level 1 (static contracts)
         run: python3 -m unittest tests.eval.test_skill_contracts -v
       - name: Run Level 2 (trace invariants) + probe pre-checks
@@ -35,7 +35,7 @@ jobs:
             tests.eval.probes.test_brief_synthesis -v
 
   llm-evals:
-    name: 'llm-evals (muse-spark semantic probes)'
+    name: "llm-evals (muse-spark semantic probes)"
     needs: static-evals
     permissions:
       contents: read
